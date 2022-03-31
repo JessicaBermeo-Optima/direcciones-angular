@@ -53,7 +53,7 @@ button:hover{
 }
 .top_b{
     display: grid;
-    grid-template-columns: 247px auto 274px;
+    grid-template-columns: 247px auto 276px;
     margin-left: 6%;
     margin-right: 6%;
 }

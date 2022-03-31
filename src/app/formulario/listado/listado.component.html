@@ -1,40 +1,50 @@
 <!-- <form (ngSubmit)="agregar()"> -->
     <header class="top">
-        <article class="top_t1">
+        <article class="top_a">
             <span>Dirección:</span>
-            <input type="text" class="lock" [value]="imprimirDirecciones(varDireccion)" readonly>
-        </article>
-        <article class="top_t1">
+            <input type="text" [value]="imprimirDirecciones(varDireccion)" readonly>
             <span>Dirección con codificación Dian:</span>
-            <input type="text" class="lock" [value]="imprimirDirecciones(varDirCofificada)" readonly>
+            <input type="text" [value]="imprimirDirecciones(varDirCofificada)" readonly>
         </article>
-        <article class="top_t1">
-            <span>Buscar:</span>
-            <select name="drop_tab" >
-                <option disabled>Elige una opción...</option>
-                <option *ngFor="let dato of datosSelector" >{{dato.nombre}}</option>
-            </select>
+        <article class="top_b">
+            <article class="top_b_buscar">
+                <span>Buscar:</span>
+                <select name="b_buscar_drop">
+                    <option disabled>Elige una opción...</option>
+                    <option *ngFor="let dato of datosSelector" >{{dato.nombre}}</option>
+                </select>
+            </article>
+            <article class="top_b_nombre">
+                <span> $nombre con nombre?</span>
+                <article>
+                    <select name="" id="">
+                        <option value="">Si</option>
+                        <option value="">No</option>
+                    </select>
+                    <input type="text">
+                </article>
+            </article>
         </article>
     </header>
-    <section class="mid1">
-        <h2>Nomenclaturas</h2>
-        <article class="mid1_grid" id="mid1_grid">
-            <button *ngFor="let dato of datosNomenclatura" class="but_t1" (click)="validarDirecciones(dato)">{{dato.nombre}}</button>
+    <section class="mid">
+        <h1>Nomenclaturas</h1>
+        <article class="mid_tablanom" id="mid1_grid">
+            <button *ngFor="let dato of datosNomenclatura" class="mid_tablanom_boton" (click)="validarDirecciones(dato)">{{dato.nombre}}</button>
         </article>
     </section>
-    <section class="mid2">
-        <h2>Digitos</h2>
-        <article class="tabla_num" id="tabla_num">
-            <button *ngFor="let dato of datosNumeros" class="but_t2" (click)="validarDirecciones(dato)">{{dato.nombre}}</button>
+    <section class="boot">
+        <h1 class="boot_titunum">Digitos</h1>
+        <article class="boot_tablanum" id="tabla_num">
+            <button *ngFor="let dato of datosNumeros" class="boot_boton" (click)="validarDirecciones(dato)">{{dato.nombre}}</button>
         </article>
-        <h2 class="t_let">Letras</h2>
-        <article class="tabla_let" id="tabla_let">
-            <button *ngFor="let dato of datosLetras" class="but_t2" (click)="validarDirecciones(dato)">{{dato.nombre}}</button>
+        <h1 class="boot_titulet">Letras</h1>
+        <article class="boot_tablalet" id="tabla_let">
+            <button *ngFor="let dato of datosLetras" class="boot_boton" (click)="validarDirecciones(dato)">{{dato.nombre}}</button>
         </article>
-        <article class="botones">
-            <button class="but_t3" (click)="deshacer()">Deshacer</button>
-            <button class="but_t3" (click)="limpiar()">Limpiar</button>
-            <button class="but_t3">Enviar</button>
+        <article class="boot_botones">
+            <button class="boot_botones_boton" (click)="deshacer()">Deshacer</button>
+            <button class="boot_botones_boton" (click)="limpiar()">Limpiar</button>
+            <button class="boot_botones_boton">Enviar</button>
         </article>
     </section>
 <!-- </form> -->

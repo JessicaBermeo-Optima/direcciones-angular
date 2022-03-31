@@ -6,25 +6,18 @@
     font-family: 'Fredoka', sans-serif;
     font-family: 'Roboto', sans-serif;
 }
-.contenedor{
-    padding: 0% 6% 2% 6%;
-    height: 100%;
-    background-color: #D6EAF8;
-}
-h1, h2{
-    color: #283747;
+h1{
+    color: #34495E;
     margin: 0px;
-}
-h2{
     text-align: left;
     font-size: 18px;
     margin: 10px auto 10px 0px;
 }
-input{
-    cursor: default;
-    outline: none;
+span{
+    font-size: 12px;
+    color: #34495E;
+    margin: 5px auto 5px 0px;
 }
-
 button{
     color: #34495E;
     padding: 0px;
@@ -39,22 +32,7 @@ button:hover{
     color: #2E4053;
     cursor: pointer;
 }
-.but_t1{
-    font-size: 10px;
-    height: 28px;
-    margin: 2px;
-}
-.but_t2{
-    font-size: 12px;
-    height: 26px;
-    width: 40px;
-}
-.but_t3{
-    font-size: 12px;
-    height: 26px;
-    width: 80px;
-    margin-left: 4px;
-}
+
 
 .top{
     position: fixed;
@@ -64,97 +42,129 @@ button:hover{
     right: 0;
     padding-bottom: 20px;
 }
-.top_t1{
-    display: grid;
+.top_a{
+    padding-top: 10px;
     padding-left: 6%;
     padding-right: 6%;
 }
-.top_t1 span{
-    font-size: 12px;
-    color: #34495E;
-    margin: 5px auto 5px 0px;
+.top_a input{
+    cursor: default;
+    outline: none;
 }
-.drop_tab{
+.top_b{
+    display: grid;
+    grid-template-columns: 247px auto 274px;
+    margin-left: 6%;
+    margin-right: 6%;
+}
+.b_buscar_drop{
     width: 200px;
     outline: none;
 }
-
-.mid1{
-    padding-top: 140px;
+.top_b_nombre{
+    grid-column-start: 3;
+    display: grid;
 }
-.mid1_grid{
+.top_b_nombre select{
+    margin: 0px 10px 0px 0px;
+}
+.top_a, .top_b_buscar{
+    display: grid;
+}
+
+.mid{
+    padding-top: 188px;
+}
+.mid_tablanom{
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(11, 105px);
 }
-.mid2{
-     display: grid;
-     grid-template-columns: 70px 140px auto 64px 340px auto ;
-     padding-top: 20px;
+.mid_tablanom_boton{
+    font-size: 10px;
+    height: 28px;
+    margin: 2px;
 }
 
-.tabla_num{
+.boot{
+    display: grid;
+    grid-template-columns: 70px 140px auto 64px 340px auto ;
+     padding-top: 20px;
+}
+.boot_tablanum{
     display: grid;
     grid-template-columns: repeat(3, 33.3%);
     height: 110px;
 }
-.t_let{
+.boot_titulet{
     grid-column: 4;
 }
-.tabla_let{
+.boot_tablalet{
     display: grid;
     grid-template-columns: repeat(7, 14.28%);
     height: 110px;
 }
-.tabla_let button{
+.boot_tablalet button{
     text-transform: uppercase;
 }
-.botones{
+.boot_boton{
+    font-size: 12px;
+    height: 26px;
+    width: 40px;
+}
+
+.boot_botones{
     display: flex;
     align-items: center;
     justify-content: right;
 }
+.boot_botones_boton{
+    font-size: 12px;
+    height: 26px;
+    width: 80px;
+    margin-left: 4px;
+}
 
 @media(max-width:1320px){
-    .mid1_grid{
+    .mid_tablanom{
         grid-template-columns: repeat(10, 105px);
     }
 }
 @media (max-width:1200px){
-    .mid1_grid{
+    .mid_tablanom{
         grid-template-columns: repeat(9, 105px);
     }
 }
 @media (max-width:1080px){
-    .mid1_grid{
+    .mid_tablanom{
         grid-template-columns: repeat(8, 105px);
     }
 }
 @media (max-width: 1010px) {
-    .mid2{
+    .boot{
         grid-template-columns: 70px 140px auto 64px 340px;
     }
-   .botones{
-        grid-column: 1/6;
-        grid-row: 2;
-        margin-top: 15px;
-        justify-content: center;
+   .boot_botones{
+       grid-column: 1/6;
+       grid-row: 2;
+       margin-top: 15px;
+       justify-content: center;
     }
 }
 @media (max-width:960px){
-    .mid1_grid{
+    .mid_tablanom{
         grid-template-columns: repeat(7, 105px);
     }
 }
 
 @media (max-width:850px){
-    .mid1_grid{
+    .mid_tablanom{
         grid-template-columns: repeat(6, 105px);
     }
-    .mid2{
+    .boot{
         grid-template-columns: 70px 140px auto 64px 340px;
     }
-   .botones{
+    .boot_botones{
         grid-column: 1/6;
         grid-row: 2;
         margin-top: 15px;
@@ -162,46 +172,62 @@ button:hover{
     }
 }
 @media (max-width:730px){
-    .mid1_grid{
+    .mid_tablanom{
         grid-template-columns: repeat(5, 105px);
     }
-    .mid2{
+    .boot{
         padding-top: 0px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .drop_tab{
+    .b_buscar_drop{
         width: 100%;
     }
-    .but_t1{
+    .mid_tablanom_boton{
         font-size: 8.5px;
         height: 25px;
     }
-    .t_let{
+    .boot_titulet{
         margin-top: 20px;
         margin-left: 45%;
     }
-    .t_num{
+    .boot_titunum{
         margin-left: 45%;
     }
 }
 @media (max-width:610px){
-    .mid1_grid{
+    .top_b{
+        grid-template-columns: 100%;
+    }
+    .top_b_nombre{
+        grid-row: 2;
+        grid-column: 1;
+    }
+    .top_b_nombre input{
+        width: 300px;
+    }
+    .mid_tablanom{
         grid-template-columns: repeat(4, 80px);
     }
-    .t_let{
+    .boot_titulet{
         margin-left: 43%;
     }
-    .t_num{
+    .boot_titunum{
         margin-left: 43%;
+    }
+    .mid{
+        padding-top: 235px;
     }
 }
 @media(max-width:450px){
-    .t_let{
+    .boot_titulet{
         margin-left: 40%;
     }
-    .t_num{
+    .boot_titunum{
         margin-left: 40%;
+    }
+    .top_b_nombre input{
+        width: 200px;
     }
 }

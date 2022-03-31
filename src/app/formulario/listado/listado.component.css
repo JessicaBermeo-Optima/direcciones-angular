@@ -32,6 +32,11 @@ button:hover{
     color: #2E4053;
     cursor: pointer;
 }
+option, select{
+    color: #34495E;
+    font-size: 12px;
+    height: 26px;
+}
 
 
 .top{

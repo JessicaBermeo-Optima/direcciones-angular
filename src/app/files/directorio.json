@@ -1,0 +1,797 @@
+[
+    {
+        "nombre": "Adelante",
+        "abreviatura" : "ADL",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Administración",
+        "abreviatura" : "AD",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Aeropuerto",
+        "abreviatura" : "AER",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Agencia",
+        "abreviatura" : "AG",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Agrupación",
+        "abreviatura" : "AGP",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Al lado",
+        "abreviatura" : "ALD",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Almacen",
+        "abreviatura" : "ALM",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Altillo",
+        "abreviatura" : "AL",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Apartado",
+        "abreviatura" : "APTDO",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Apartamento",
+        "abreviatura" : "AP",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Atrás",
+        "abreviatura" : "ATR",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Autopista",
+        "abreviatura" : "AUT",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Auto. Simon bolivar",
+        "abreviatura" : "AUTO SIMON BOLIVAR",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Auto. Sur oriental",
+        "abreviatura" : "AUTO SUR ORIENTAL",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Av. de los cerros",
+        "abreviatura" : "AVE DE LOS CERROS",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Av. Cañas gorda",
+        "abreviatura" : "AVE CAÑAS GORDA",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Av. circunvalar",
+        "abreviatura" : "AVE CIRCUNVALAR",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Av. ciudad de cali",
+        "abreviatura" : "AVE CIUDAD DE CALI",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Av. colombia",
+        "abreviatura" : "AVE COLOMBIA",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Av. guadalupe",
+        "abreviatura" : "AVE GUADALUPE",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Av. pasoancho",
+        "abreviatura" : "AVE PASOANCHO",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Av. roosevelt",
+        "abreviatura" : "AVE ROOSEVELT",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Avenida",
+        "abreviatura" : "AV",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Avenida calle",
+        "abreviatura" : "AC",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Avenida carrera",
+        "abreviatura" : "AK",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Barrio",
+        "abreviatura" : "BRR",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Bodega",
+        "abreviatura" : "BG",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Bloque",
+        "abreviatura" : "BL",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Boulevar",
+        "abreviatura" : "BLV",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Calle",
+        "abreviatura" : "CL",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Camino",
+        "abreviatura" : "CN",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Carrera",
+        "abreviatura" : "CR",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Carretera",
+        "abreviatura" : "CRT",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Casa",
+        "abreviatura" : "CA",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Caserio",
+        "abreviatura" : "CAS",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Celula",
+        "abreviatura" : "CEL",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Centro",
+        "abreviatura" : "CEN",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Centro comercial",
+        "abreviatura" : "CC",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Circular",
+        "abreviatura" : "CIR",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Circunvalar",
+        "abreviatura" : "CRV",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Ciudadela",
+        "abreviatura" : "CD",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Conjunto",
+        "abreviatura" : "CONJ",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Conjunto residencial",
+        "abreviatura" : "CON",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Corregimiento",
+        "abreviatura" : "CRR",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Consultorio",
+        "abreviatura" : "CS",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Departamento",
+        "abreviatura" : "DPTO",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Deposito",
+        "abreviatura" : "DP",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Deposito sotano",
+        "abreviatura" : "DS",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Diagonal",
+        "abreviatura" : "DG",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Edificio",
+        "abreviatura" : "ED",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Entrada",
+        "abreviatura" : "EN",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Etapa",
+        "abreviatura" : "ET",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Escalera",
+        "abreviatura" : "ESC",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Esquina",
+        "abreviatura" : "ESQ",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Este",
+        "abreviatura" : "ESTE",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Exterior",
+        "abreviatura" : "EX",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Finca",
+        "abreviatura" : "FCA",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Glorieta",
+        "abreviatura" : "GT",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Garaje",
+        "abreviatura" : "GJ",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Garaje sotano",
+        "abreviatura" : "GS",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Hacienda",
+        "abreviatura" : "HC",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Hangar",
+        "abreviatura" : "HG",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Interior",
+        "abreviatura" : "IN",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Inspección Departamental",
+        "abreviatura" : "IPD",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Inspección de Policia",
+        "abreviatura" : "IP",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Inspección Municipal",
+        "abreviatura" : "IPM",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Kilometro",
+        "abreviatura" : "KM",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Local",
+        "abreviatura" : "LC",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Local mezzanine",
+        "abreviatura" : "LM",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Lote",
+        "abreviatura" : "LT",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Manzana",
+        "abreviatura" : "MZ",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Mezzanine",
+        "abreviatura" : "MN",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Modulo",
+        "abreviatura" : "MD",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Mojón",
+        "abreviatura" : "MJ",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Muelle",
+        "abreviatura" : "MLL",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Municipio",
+        "abreviatura" : "MCP",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Norte",
+        "abreviatura" : "NORTE",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Occidente",
+        "abreviatura" : "OCC",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Oeste",
+        "abreviatura" : "OESTE",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Oficina",
+        "abreviatura" : "OF",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Oriente",
+        "abreviatura" : "O",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Paraje",
+        "abreviatura" : "PRJ",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Parcela",
+        "abreviatura" : "PA",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Park Way",
+        "abreviatura" : "PW",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Parqueadero",
+        "abreviatura" : "PQ",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Parque",
+        "abreviatura" : "PAR",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Pasaje",
+        "abreviatura" : "PJ",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Paseo",
+        "abreviatura" : "PS",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Penthouse",
+        "abreviatura" : "PH",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Piso",
+        "abreviatura" : "P",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Planta",
+        "abreviatura" : "PL",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Porteria",
+        "abreviatura" : "POR",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Poste",
+        "abreviatura" : "POS",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Predio",
+        "abreviatura" : "PD",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Puente",
+        "abreviatura" : "PN",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Puesto",
+        "abreviatura" : "PT",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Round  point",
+        "abreviatura" : "RP",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Salida",
+        "abreviatura" : "SD",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Salon",
+        "abreviatura" : "SA",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Salon comunal",
+        "abreviatura" : "SC",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Sector",
+        "abreviatura" : "SEC",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Solar",
+        "abreviatura" : "SLR",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Sotano",
+        "abreviatura" : "ST",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Suite",
+        "abreviatura" : "SUITE",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Supermanzana",
+        "abreviatura" : "SM",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Sur",
+        "abreviatura" : "SUR ",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Terminal",
+        "abreviatura" : "TER",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Terraplén",
+        "abreviatura" : "TERPLN",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Terraza",
+        "abreviatura" : "TZ",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Torre",
+        "abreviatura" : "TO",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Transversal",
+        "abreviatura" : "TV",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Unidad",
+        "abreviatura" : "UN",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Unidad residencial",
+        "abreviatura" : "UR",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Urbanización",
+        "abreviatura" : "URB",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Variante",
+        "abreviatura" : "VTE",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Vereda",
+        "abreviatura" : "VRD",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Via",
+        "abreviatura" : "VIA",
+        "tipo": "opcion"
+    },
+    {
+        "nombre": "Zona",
+        "abreviatura" : "ZN",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "Zona franca",
+        "abreviatura" : "ZF",
+        "tipo": "nomenclatura"
+    },
+    {
+        "nombre": "1",
+        "abreviatura" : "1",
+        "tipo": "numero"
+    },
+    {
+        "nombre": "2",
+        "abreviatura" : "2",
+        "tipo": "numero"
+    },
+    {
+        "nombre": "3",
+        "abreviatura" : "3",
+        "tipo": "numero"
+    },
+    {
+        "nombre": "4",
+        "abreviatura" : "4",
+        "tipo": "numero"
+    },
+    {
+        "nombre": "5",
+        "abreviatura" : "5",
+        "tipo": "numero"
+    },
+    {
+        "nombre": "6",
+        "abreviatura" : "6",
+        "tipo": "numero"
+    },
+    {
+        "nombre": "7",
+        "abreviatura" : "7",
+        "tipo": "numero"
+    },
+    {
+        "nombre": "8",
+        "abreviatura" : "8",
+        "tipo": "numero"
+    },
+    {
+        "nombre": "9",
+        "abreviatura" : "9",
+        "tipo": "numero"
+    },
+    {
+        "nombre": "#",
+        "abreviatura" : " ",
+        "tipo": "especial"
+    },
+    {
+        "nombre": "0",
+        "abreviatura" : "0",
+        "tipo": "numero"
+    },
+    {
+        "nombre": "-",
+        "abreviatura" : " ",
+        "tipo": "especial"
+    },
+    {
+        "nombre": "A",
+        "abreviatura" : "A",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "B",
+        "abreviatura" : "B",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "C",
+        "abreviatura" : "C",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "D",
+        "abreviatura" : "D",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "E",
+        "abreviatura" : "E",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "F",
+        "abreviatura" : "F",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "G",
+        "abreviatura" : "G",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "H",
+        "abreviatura" : "H",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "I",
+        "abreviatura" : "I",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "J",
+        "abreviatura" : "J",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "K",
+        "abreviatura" : "K",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "L",
+        "abreviatura" : "L",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "M",
+        "abreviatura" : "M",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "N",
+        "abreviatura" : "N",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "Ñ",
+        "abreviatura" : "Ñ",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "O",
+        "abreviatura" : "O",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "P",
+        "abreviatura" : "P",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "Q",
+        "abreviatura" : "Q",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "R",
+        "abreviatura" : "R",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "S",
+        "abreviatura" : "S",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "T",
+        "abreviatura" : "T",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "U",
+        "abreviatura" : "U",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "V",
+        "abreviatura" : "V",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "W",
+        "abreviatura" : "W",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "X",
+        "abreviatura" : "X",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "Y",
+        "abreviatura" : "Y",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "Z",
+        "abreviatura" : "Z",
+        "tipo": "letra"
+    },
+    {
+        "nombre": "BIS",
+        "abreviatura" : "BIS",
+        "tipo": "letra"
+    }
+]

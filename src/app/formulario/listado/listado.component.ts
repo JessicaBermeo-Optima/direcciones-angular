@@ -12,6 +12,7 @@ interface BotonDireccion {
   styleUrls: ['./listado.component.css'],
 })
 export class ListadoComponent {
+  opcionSelector    : string   = '';
   varDireccion      : string[] = [];
   varTipoDireccion  : string[] = [];
   varDirCofificada  : string[] = [];
@@ -19,11 +20,11 @@ export class ListadoComponent {
 
   datosSelector     : BotonDireccion[] = this.directorioList.filter((dir) => {
                       return dir.tipo === 'opcion' || dir.tipo === 'nomenclatura';
-                    });
+                      });
 
-  datosNomenclatura: BotonDireccion[] = this.directorioList.filter((dir) => {
+  datosNomenclatura : BotonDireccion[] = this.directorioList.filter((dir) => {
                       return dir.tipo === 'nomenclatura';
-                    });
+                      });
 
   datosNumeros      : BotonDireccion[] = this.directorioList.filter((dir) => {
                         return dir.tipo === 'numero' || dir.tipo === 'especial';
@@ -41,7 +42,7 @@ export class ListadoComponent {
     
     let tipo : string = boton.tipo;
     if (this.varDireccion[0] === undefined ) {
-      if (tipo === ('nomenclatura' || 'opcion')) {
+      if (tipo === 'nomenclatura' ||  tipo === 'opcion') {
         this.llenarDirecciones( boton );
         return false;
       } else {
@@ -53,17 +54,28 @@ export class ListadoComponent {
     }
   }
   
+  validarSelector( dato : string ): void {
+
+    let ultimaPosicion : number  = this.varTipoDireccion.length - 1 ;
+    let ultimoTipo     : string  = this.varTipoDireccion[ultimaPosicion];
+    let boton          : BotonDireccion = 
+                        this.directorioList.find(dir => dir.nombre === dato) || 
+                        { nombre :'0', abreviatura : '0', tipo : '0'};
+
+    this.validarNomenclaturas( boton );
+    console.log(boton);
+  }
+  
   validarNomenclaturas( boton : BotonDireccion ): void {
 
     let ultimaPosicion : number  = this.varTipoDireccion.length - 1 ;
     let ultimoTipo     : string  = this.varTipoDireccion[ultimaPosicion];
 
     if (this.validacionInicial( boton )) {
-      ultimoTipo !== ('nomenclatura' || 'opcion')
-                      ? this.llenarDirecciones( boton )
-                      : alert('No se puede ingresar 2 nomenclaturas del mismo tipo');
+      (ultimoTipo === 'nomenclatura' || ultimoTipo === 'opcion')
+                      ? alert('No se puede ingresar 2 nomenclaturas del mismo tipo')
+                      : this.llenarDirecciones( boton );
     }
-    console.log(ultimoTipo);
   }
 
   validarNumeros( boton : BotonDireccion ): void {
@@ -92,7 +104,7 @@ export class ListadoComponent {
     if (this.validacionInicial( boton )) {
 
       ( ultimoTipo && PenUltimoTipo ) === 'letra' ? alert('No se puede ingresar 3 letras seguidas')
-                                      :  ultimoNombre === nombre ? alert('No se puede ingresar 2 letras iguales')
+                                      : ultimoNombre === nombre ? alert('No se puede ingresar 2 letras iguales')
                                       : this.llenarDirecciones( boton );
     }
   }
@@ -122,13 +134,13 @@ export class ListadoComponent {
   }
 
   enviar(): void {
-    const form = document.createElement('form');
+    const form  = document.createElement('form');
     form.method = 'post';
     form.action = 'http://example.com/'; //Aquí va la URL del proyecto al que le va a llegar el dato
 
     const hiddenField = document.createElement('input');
-    hiddenField.type = 'hidden';
-    hiddenField.name = 'test';
+    hiddenField.type  = 'hidden';
+    hiddenField.name  = 'test';
     hiddenField.value = 'testeando la aplicacion';
 
     document.body.appendChild(form);

@@ -8,9 +8,9 @@
     <article class="top_b">
         <article class="top_b_buscar">
             <span>Buscar:</span>
-            <select name="b_buscar_drop">
+            <select name="b_buscar_drop" [(ngModel)]="opcionSelector" (change)="validarSelector(opcionSelector)">
                 <option selected disabled>Elige una opción...</option>
-                <option *ngFor="let dato of datosSelector">{{dato.nombre}}</option>
+                <option *ngFor="let dato of datosSelector" >{{dato.nombre}}</option>
             </select>
         </article>
         <article class="top_b_nombre">

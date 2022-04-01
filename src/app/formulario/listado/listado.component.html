@@ -8,10 +8,11 @@
     <article class="top_b">
         <article class="top_b_buscar">
             <span>Buscar:</span>
-            <select name="b_buscar_drop" [(ngModel)]="opcionSelector" (change)="validarSelector(opcionSelector)">
-                <option selected disabled>Elige una opción...</option>
+
+            <input list="buscador" name="b_buscar_drop" [(ngModel)]="opcionSelector" (change)="validarSelector(opcionSelector)">
+            <datalist id="buscador">
                 <option *ngFor="let dato of datosSelector" >{{dato.nombre}}</option>
-            </select>
+            </datalist>
         </article>
         <article class="top_b_nombre">
             <span> $nombre con nombre?</span>
@@ -20,7 +21,7 @@
                     <option value="">Si</option>
                     <option value="">No</option>
                 </select>
-                <input type="text">
+                <input type="text" >
             </article>
         </article>
     </article>

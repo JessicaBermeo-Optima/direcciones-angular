@@ -6,12 +6,6 @@ interface BotonDireccion {
   abreviatura : string;
   tipo        : string;
 }
-
-interface Validaciones {
-  tipo : string;
-  funcion : () => void;
-}
-
 @Component({ 
   selector: 'app-listado',
   templateUrl: './listado.component.html',
@@ -23,10 +17,6 @@ export class ListadoComponent{
   varDireccion      : string[] = [];
   varTipoDireccion  : string[] = [];
   varDirCofificada  : string[] = [];
-  ultimaPosicion    : number   = this.varTipoDireccion.length - 1; 
-  ultimoTipo        : string   = this.varTipoDireccion[this.ultimaPosicion];
-  penUltimoTipo     : string   = this.varDireccion[this.ultimaPosicion - 1];
-  ultimaDireccion   : string   = this.varDireccion[this.ultimaPosicion];
   directorioList    : BotonDireccion[] = directorio;
 
   datosSelector     : BotonDireccion[] = this.directorioList.filter((dir) => {
@@ -48,57 +38,65 @@ export class ListadoComponent{
   constructor() { 
 
   }
-  // agregar() { 
-  //   console.log('Esto es una prueba');
-  // }
-  
-  validarDirecciones( boton : BotonDireccion ):void {
-    
-    let tipo      : string = boton.tipo;
-    let tipoTipos : string[] = ['opcion','nomenclatura','numero','especial','letra'];
 
+  validacionInicial( boton : BotonDireccion ):boolean {
+    
+    let tipo : string = boton.tipo;
     if (this.varDireccion[0] === undefined ) {
       if (tipo === ('nomenclatura' || 'opcion')) {
         this.llenarDirecciones( boton );
+        return false;
       } else {
-        console.log('Alert ->Debe ser tipo nomenclatura');
+        alert('Debe ser tipo nomenclatura');
+        return false;
       }      
     } else {
-      tipo === ('nomenclatura' || 'opcion') ? this.nomenclaturaIgual( boton ) : false
-
+      return true;
     }
-
-  }
-
-  nomenclaturaIgual( boton : BotonDireccion ): void {
-
-    this.ultimoTipo !== ('nomenclatura' || 'opcion')
-                    ? this.llenarDirecciones( boton ) 
-                    : console.log('Alert -> No se puede ingresar 2 nomenclaturas del mismo tipo');
-    
-    console.log('Se esta ejecutando');
-
-  }
-
-  letraIgual( boton : BotonDireccion ): void {
-
-    this.ultimaDireccion !== boton.nombre
-                    ? this.llenarDirecciones( boton ) 
-                    : console.log('Alert -> No se puede ingresar la misma letra');
   }
   
-  letrasSeguidas( boton : BotonDireccion ): void {
-    
-    (this.ultimoTipo && this.penUltimoTipo) === 'numero'
-    ? console.log('Alert -> No se puede ingresar 3 letras seguidas')
-    : this.llenarDirecciones( boton );
-  }
-  
-  simbolosRepetidos( boton : BotonDireccion ): void {
+  validarNomenclaturas( boton : BotonDireccion ): void {
 
-    this.ultimaDireccion !== boton.nombre
-                    ? this.llenarDirecciones( boton ) 
-                    : console.log('Alert -> No se puede ingresar la misma letra');
+    let ultimaPosicion : number  = this.varTipoDireccion.length - 1 ;
+    let ultimoTipo     : string  = this.varTipoDireccion[ultimaPosicion];
+
+    if (this.validacionInicial( boton )) {
+      ultimoTipo !== ('nomenclatura' || 'opcion')
+                      ? this.llenarDirecciones( boton )
+                      : alert('No se puede ingresar 2 nomenclaturas del mismo tipo');
+    }
+    console.log(ultimoTipo);
+  }
+
+  validarNumeros( boton : BotonDireccion ): void {
+
+    let tipo           : string  = boton.tipo;
+    let ultimaPosicion : number  = this.varTipoDireccion.length - 1 ;
+    let ultimoTipo     : string  = this.varTipoDireccion[ultimaPosicion];
+
+    if (this.validacionInicial( boton )) {
+
+      tipo === 'numero' ? this.llenarDirecciones( boton )
+                        : ultimoTipo === 'especial' ? alert('No se puede ingresar 2 nomenclaturas especiales')
+                        : this.llenarDirecciones( boton );
+    }
+    console.log(ultimoTipo);
+  }
+
+  validarLetras( boton : BotonDireccion ): void {
+    
+    let nombre         : string  = boton.nombre;
+    let ultimaPosicion : number  = this.varTipoDireccion.length - 1 ;
+    let ultimoTipo     : string  = this.varTipoDireccion[ultimaPosicion];
+    let PenUltimoTipo  : string  = this.varTipoDireccion[ultimaPosicion - 1];
+    let ultimoNombre   : string  = this.varDireccion[ultimaPosicion];
+
+    if (this.validacionInicial( boton )) {
+
+      ( ultimoTipo && PenUltimoTipo ) === 'letra' ? alert('No se puede ingresar 3 letras seguidas')
+                                      :  ultimoNombre === nombre ? alert('No se puede ingresar 2 letras iguales')
+                                      : this.llenarDirecciones( boton );
+    }
   }
 
   imprimirDirecciones( direccion: string[] ) : string {
@@ -116,20 +114,17 @@ export class ListadoComponent{
     this.varDireccion.push(boton.nombre); 
     this.varDirCofificada.push(boton.abreviatura);
     this.varTipoDireccion.push(boton.tipo);
-    console.log(this.varDireccion, this.varDirCofificada);
 
   }
 
   deshacer(): void {
     this.varDireccion.pop(); 
     this.varDirCofificada.pop();
-    console.log(this.varDireccion, this.varDirCofificada);
   }
 
   limpiar():void {
     this.varDireccion     = []; 
     this.varDirCofificada = []; 
-    console.log(this.varDireccion, this.varDirCofificada);
   }
 
   enviar():string {

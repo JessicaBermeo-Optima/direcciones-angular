@@ -39,7 +39,7 @@ button:hover{
     color: #2E4053;
     cursor: pointer;
 }
-input, datalist{
+input, datalist, select{
     color: #34495E;
     font-size: 12px;
     height: 26px;
@@ -65,7 +65,7 @@ input, datalist{
 }
 .top_b{
     display: grid;
-    grid-template-columns: 247px auto 276px;
+    grid-template-columns: 247px auto 290px;
     margin-left: 6%;
     margin-right: 6%;
 }
@@ -79,6 +79,12 @@ input, datalist{
 }
 .top_b_nombre select{
     margin: 0px 10px 0px 0px;
+}
+.b_nombre_boton{
+    width: 65px;
+    height: 26px;
+    font-size: 12px;
+    margin: 0px 0px 0px 10px;
 }
 .top_a, .top_b_buscar{
     display: grid;
@@ -208,7 +214,7 @@ input, datalist{
         margin-left: 45%;
     }
 }
-@media (max-width:610px){
+@media (max-width:660px) {
     .top_b{
         grid-template-columns: 100%;
     }
@@ -219,6 +225,12 @@ input, datalist{
     .top_b_nombre input{
         width: 300px;
     }
+    .mid{
+        padding-top: 235px;
+    }
+}
+
+@media (max-width:610px){
     .mid_tablanom{
         grid-template-columns: repeat(4, 80px);
     }
@@ -228,11 +240,8 @@ input, datalist{
     .boot_titunum{
         margin-left: 43%;
     }
-    .mid{
-        padding-top: 235px;
-    }
 }
-@media(max-width:450px){
+@media(max-width:500px){
     .boot_titulet{
         margin-left: 40%;
     }

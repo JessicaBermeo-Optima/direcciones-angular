@@ -8,7 +8,6 @@
     <article class="top_b">
         <article class="top_b_buscar">
             <span>Buscar:</span>
-
             <input list="buscador" name="b_buscar_drop" [(ngModel)]="opcionSelector" (change)="validarSelector(opcionSelector)">
             <datalist id="buscador">
                 <option *ngFor="let dato of datosSelector" >{{dato.nombre}}</option>
@@ -22,6 +21,7 @@
                     <option value="">No</option>
                 </select>
                 <input type="text" >
+                <button class="b_nombre_boton">Agregar</button>
             </article>
         </article>
     </article>

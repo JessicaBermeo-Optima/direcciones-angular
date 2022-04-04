@@ -660,6 +660,12 @@
         "nombrable": "si"
     },
     {
+        "nombre": "Vias de nombre comun",
+        "abreviatura" : "NOMBRE DE LA VIA",
+        "tipo": "opcion",
+        "nombrable": false
+    },
+    {
         "nombre": "Zona",
         "abreviatura" : "ZN",
         "tipo": "nomenclatura",

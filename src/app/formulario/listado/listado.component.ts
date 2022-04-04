@@ -126,11 +126,13 @@ export class ListadoComponent {
   deshacer(): void {
     this.varDireccion.pop();
     this.varDirCofificada.pop();
+    this.varTipoDireccion.pop();
   }
 
   limpiar():void {
     this.varDireccion     = []; 
     this.varDirCofificada = []; 
+    this.varTipoDireccion = []; 
   }
 
   enviar(): void {

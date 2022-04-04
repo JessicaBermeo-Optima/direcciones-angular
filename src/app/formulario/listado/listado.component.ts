@@ -53,6 +53,10 @@ export class ListadoComponent {
       return true;
     }
   }
+
+  nombrePersonalizado(){
+    
+  }
   
   validarSelector( dato : string ): void {
 

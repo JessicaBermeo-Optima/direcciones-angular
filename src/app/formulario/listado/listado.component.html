@@ -13,38 +13,37 @@
                 <option *ngFor="let dato of datosSelector" >{{dato.nombre}}</option>
             </datalist>
         </article>
-        <article class="top_b_nombre" #nombrePersonalizado>
+        <article class="top_b_nombre" [hidden]="!estadoNombrable">
             <span> $nombre con nombre?</span>
-            <article>
-                <select class="b_nombre_select" name="" id="">
-                    <option value="">Si</option>
+            <form (ngSubmit)="validarNombrable()">
+                <select class="b_nombre_select" [(ngModel)]="opcionNombrable" (change)="cambiarEstadoNombrable(opcionNombrable)" name="opcionNombrable1">
+                    <option value="true"> Si</option>
                     <option value="">No</option>
                 </select>
-                <input type="text" >
+                <input type="text" [(ngModel)]="nombreExterno" name="nombreExterno">
                 <button class="b_nombre_boton">Agregar</button>
-            </article>
+            </form>
         </article>
     </article>
-    </header>
-    <section class="mid">
-        <h1>Nomenclaturas</h1>
-        <article class="mid_tablanom" id="mid1_grid">
-            <button *ngFor="let dato of datosNomenclatura" class="mid_tablanom_boton" (click)="validarNomenclaturas(dato)">{{dato.nombre}}</button>
-        </article>
-    </section>
-    <section class="boot">
-        <h1 class="boot_titunum">Digitos</h1>
-        <article class="boot_tablanum" id="tabla_num">
-            <button *ngFor="let dato of datosNumeros" class="boot_boton" (click)="validarNumeros(dato)">{{dato.nombre}}</button>
-        </article>
-        <h1 class="boot_titulet">Letras</h1>
-        <article class="boot_tablalet" id="tabla_let">
-            <button *ngFor="let dato of datosLetras" class="boot_boton" (click)="validarLetras(dato)">{{dato.nombre}}</button>
-        </article>
-        <article class="boot_botones">
-            <button class="boot_botones_boton" (click)="deshacer()">Deshacer</button>
-            <button class="boot_botones_boton" (click)="limpiar()">Limpiar</button>
-            <button class="boot_botones_boton" (click)="enviar()">Enviar</button>
-        </article>
-    </section>
-<!-- </form> -->
+</header>
+<section class="mid">
+    <h1>Nomenclaturas</h1>
+    <article class="mid_tablanom" id="mid1_grid">
+        <button *ngFor="let dato of datosNomenclatura" class="mid_tablanom_boton" (click)="validarNomenclaturas(dato)">{{dato.nombre}}</button>
+    </article>
+</section>
+<section class="boot">
+    <h1 class="boot_titunum">Digitos</h1>
+    <article class="boot_tablanum" id="tabla_num">
+        <button *ngFor="let dato of datosNumeros" class="boot_boton" (click)="validarNumeros(dato)">{{dato.nombre}}</button>
+    </article>
+    <h1 class="boot_titulet">Letras</h1>
+    <article class="boot_tablalet" id="tabla_let">
+        <button *ngFor="let dato of datosLetras" class="boot_boton" (click)="validarLetras(dato)">{{dato.nombre}}</button>
+    </article>
+    <article class="boot_botones">
+        <button class="boot_botones_boton" (click)="deshacer()">Deshacer</button>
+        <button class="boot_botones_boton" (click)="limpiar()">Limpiar</button>
+        <button class="boot_botones_boton" >Enviar</button>
+    </article>
+</section>

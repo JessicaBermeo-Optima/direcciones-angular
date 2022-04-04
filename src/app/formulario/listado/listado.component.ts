@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import directorio from '../../files/directorio.json';
 
 interface BotonDireccion {
-  nombre: string;
-  abreviatura: string;
-  tipo: string;
+  nombre      : string;
+  abreviatura : string;
+  tipo        : string;
+  nombrable   : boolean;
 }
 @Component({ 
   selector: 'app-listado',
@@ -12,10 +13,14 @@ interface BotonDireccion {
   styleUrls: ['./listado.component.css'],
 })
 export class ListadoComponent {
+
   opcionSelector    : string   = '';
+  nombreExterno     : string   = '';
   varDireccion      : string[] = [];
   varTipoDireccion  : string[] = [];
   varDirCofificada  : string[] = [];
+  estadoNombrable   : Boolean  = false;
+  opcionNombrable   : Boolean  = false;
   directorioList    : BotonDireccion[] = directorio;
 
   datosSelector     : BotonDireccion[] = this.directorioList.filter((dir) => {
@@ -38,9 +43,18 @@ export class ListadoComponent {
 
   }
 
+  cambiarEstadoNombrable(estado : Boolean ):void {
+    
+    this.estadoNombrable = Boolean(estado);
+  } 
+
   validacionInicial( boton : BotonDireccion ):boolean {
     
-    let tipo : string = boton.tipo;
+    let tipo      : string  = boton.tipo;
+    let nombrable : boolean = boton.nombrable
+    
+    this.cambiarEstadoNombrable(nombrable);
+
     if (this.varDireccion[0] === undefined ) {
       if (tipo === 'nomenclatura' ||  tipo === 'opcion') {
         this.llenarDirecciones( boton );
@@ -54,31 +68,51 @@ export class ListadoComponent {
     }
   }
 
-  nombrePersonalizado(){
-    
-  }
-  
   validarSelector( dato : string ): void {
 
     let ultimaPosicion : number  = this.varTipoDireccion.length - 1 ;
     let ultimoTipo     : string  = this.varTipoDireccion[ultimaPosicion];
     let boton          : BotonDireccion = 
                         this.directorioList.find(dir => dir.nombre === dato) || 
-                        { nombre :'0', abreviatura : '0', tipo : '0'};
+                        { nombre :'0', abreviatura : '0', tipo : '0', nombrable : false};
 
     this.validarNomenclaturas( boton );
-    console.log(boton);
+  }
+  
+
+  validarNombrable() {
+
+    let regexObj1 = /(?=.*[0-9]{1,})/;
+    let regexObj2 = /(?=.*[!@#$%&*]{1,})/; 
+    if (regexObj1.test(this.nombreExterno) || regexObj2.test(this.nombreExterno)) {
+
+      alert('El nombre no puede contener numeros o caracteres especiales');
+      this.nombreExterno = '';
+
+    } else {
+      
+      let boton : BotonDireccion = { 
+        nombre      : this.nombreExterno, 
+        abreviatura : this.nombreExterno, 
+        tipo        : 'otro', 
+        nombrable   : false
+      };
+      this.llenarDirecciones( boton );
+      this.estadoNombrable = false;
+      this.nombreExterno = '';
+    }
+
   }
   
   validarNomenclaturas( boton : BotonDireccion ): void {
 
     let ultimaPosicion : number  = this.varTipoDireccion.length - 1 ;
     let ultimoTipo     : string  = this.varTipoDireccion[ultimaPosicion];
-
+    
     if (this.validacionInicial( boton )) {
       (ultimoTipo === 'nomenclatura' || ultimoTipo === 'opcion')
-                      ? alert('No se puede ingresar 2 nomenclaturas del mismo tipo')
-                      : this.llenarDirecciones( boton );
+      ? alert('No se puede ingresar 2 nomenclaturas del mismo tipo')
+      : this.llenarDirecciones( boton );
     }
   }
 
@@ -94,7 +128,7 @@ export class ListadoComponent {
                         : ultimoTipo === 'especial' ? alert('No se puede ingresar 2 nomenclaturas especiales')
                         : this.llenarDirecciones( boton );
     }
-    console.log(ultimoTipo);
+
   }
 
   validarLetras( boton : BotonDireccion ): void {

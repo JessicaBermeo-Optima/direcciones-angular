@@ -13,11 +13,11 @@
                 <option *ngFor="let dato of datosSelector" >{{dato.nombre}}</option>
             </datalist>
         </article>
-        <article class="top_b_nombre" [hidden]="!estadoNombrable">
+        <article class="top_b_nombre" *ngIf="estadoNombrable">
             <span> $nombre con nombre?</span>
             <form (ngSubmit)="validarNombrable()">
                 <select class="b_nombre_select" [(ngModel)]="opcionNombrable" (change)="cambiarEstadoNombrable(opcionNombrable)" name="opcionNombrable1">
-                    <option value="true"> Si</option>
+                    <option value="true" selected> Si</option>
                     <option value="">No</option>
                 </select>
                 <input type="text" [(ngModel)]="nombreExterno" name="nombreExterno">
@@ -47,3 +47,5 @@
         <button class="boot_botones_boton" >Enviar</button>
     </article>
 </section>
+
+

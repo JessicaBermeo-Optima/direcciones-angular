@@ -14,7 +14,7 @@
             </datalist>
         </article>
         <article class="top_b_nombre" [hidden]="!estadoNombrable">
-            <span> $nombre con nombre?</span>
+            <span>{{opcionNombrable}} con nombre?</span>
             <form (ngSubmit)="validarNombrable()">
                 <select class="b_nombre_select" [(ngModel)]="opcionNombrable" (change)="cambiarEstadoNombrable(opcionNombrable)" name="opcionNombrable1">
                     <option value="true"> Si</option>

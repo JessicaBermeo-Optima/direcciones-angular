@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ListadoComponent } from './listado/listado.component';
-
+import { AppRoutingModule } from "../app-routing.module";
 
 @NgModule({
     declarations: [
@@ -13,7 +13,8 @@ import { ListadoComponent } from './listado/listado.component';
     ],
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        AppRoutingModule
     ]
 
 })

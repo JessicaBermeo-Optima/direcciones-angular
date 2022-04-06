@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import directorio from '../../files/directorio.json';
 
 interface BotonDireccion {
@@ -12,7 +13,7 @@ interface BotonDireccion {
   templateUrl: './listado.component.html',
   styleUrls: ['./listado.component.css'],
 })
-export class ListadoComponent {
+export class ListadoComponent implements OnInit {
   opcionSelector: string = '';
   nombreExterno: string = '';
   varDireccion: string[] = [];
@@ -21,6 +22,8 @@ export class ListadoComponent {
   estadoNombrable: boolean = false;
   opcionNombrable: boolean = false;
   directorioList: BotonDireccion[] = directorio;
+  url: string = '';
+  document: string = '';
 
   datosSelector: BotonDireccion[] = this.directorioList.filter((dir) => {
     return dir.tipo === 'opcion' || dir.tipo === 'nomenclatura';
@@ -38,8 +41,14 @@ export class ListadoComponent {
     return dir.tipo === 'letra';
   });
 
-  constructor() {
+  constructor(private _route: ActivatedRoute) {
     console.log('Constructor de direcciones');
+  }
+  ngOnInit(): void {
+    this._route.queryParams.subscribe((params) => {
+      this.url = params['url'];
+      this.document = params['document'];
+    });
   }
 
   cambiarEstadoNombrable(estado: boolean): void {

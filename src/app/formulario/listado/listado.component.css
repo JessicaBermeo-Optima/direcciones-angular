@@ -222,6 +222,12 @@ input, datalist, select{
     .mid_tablanom{
         grid-template-columns: repeat(5, 105px);
     }
+    .boot_tablanum{
+        width: 130px;
+    }
+    .boot_tablalet{
+        width: 300px;
+    }
     .boot{
         padding-top: 0px;
         display: flex;

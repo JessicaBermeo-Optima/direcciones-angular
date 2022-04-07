@@ -13,17 +13,15 @@
                 <option *ngFor="let dato of datosSelector" >{{dato.nombre}}</option>
             </datalist>
         </article>
-        <article class="top_b_nombre" *ngIf="estadoNombrable">
-            <span> $nombre con nombre?</span>
-            <form (ngSubmit)="validarNombrable()">
-                <select class="b_nombre_select" [(ngModel)]="opcionNombrable" (change)="cambiarEstadoNombrable(opcionNombrable)" name="opcionNombrable1">
-                    <option value="true" selected> Si</option>
-                    <option value="">No</option>
-                </select>
-                <input type="text" [(ngModel)]="nombreExterno" name="nombreExterno">
-                <button class="b_nombre_boton">Agregar</button>
-            </form>
-        </article>
+        <form (ngSubmit)="validarNombrable()" class="top_b_nombre" *ngIf="estadoNombrable">
+            <span>con nombre?</span>
+            <select class="b_nombre_select" [(ngModel)]="opcionNombrable" (change)="cambiarEstadoNombrable(opcionNombrable)" name="opcionNombrable1">
+                <option value="true" selected> Si</option>
+                <option value="">No</option>
+            </select>
+            <input class="b_nombre_input" type="text" [(ngModel)]="nombreExterno" name="nombreExterno">
+            <button class="b_nombre_boton">Agregar</button>
+        </form>
     </article>
 </header>
 <section class="mid">
@@ -42,8 +40,8 @@
         <button *ngFor="let dato of datosLetras" class="boot_boton" (click)="validarLetras(dato)">{{dato.nombre}}</button>
     </article>
     <article class="boot_botones">
-        <button class="boot_botones_boton" (click)="deshacer()">Deshacer</button>
-        <button class="boot_botones_boton" (click)="limpiar()">Limpiar</button>
+        <button class="boot_botones_boton2" (click)="deshacer()">Deshacer</button>
+        <button class="boot_botones_boton2" (click)="limpiar()">Limpiar</button>
         <button class="boot_botones_boton" >Enviar</button>
     </article>
 </section>

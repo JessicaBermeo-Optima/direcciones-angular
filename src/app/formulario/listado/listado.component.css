@@ -65,7 +65,7 @@ input, datalist, select{
 }
 .top_b{
     display: grid;
-    grid-template-columns: 247px auto 290px;
+    grid-template-columns: 247px auto 296px;
     margin-left: 6%;
     margin-right: 6%;
 }
@@ -241,7 +241,7 @@ input, datalist, select{
         margin-left: 43%;
     }
 }
-@media(max-width:500px){
+@media(max-width:510px){
     .boot_titulet{
         margin-left: 40%;
     }

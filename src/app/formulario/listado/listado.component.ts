@@ -79,6 +79,7 @@ export class ListadoComponent implements OnInit {
       (dir) => dir.nombre === dato
     ) || { nombre: '0', abreviatura: '0', tipo: '0', nombrable: false };
 
+    this.opcionSelector = '';
     this.validarNomenclaturas(boton);
   }
 

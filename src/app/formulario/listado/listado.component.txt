@@ -17,9 +17,12 @@ export class ListadoComponent implements OnInit {
   opcionSelector: string = '';
   nombreExterno: string = '';
   nomPersonalizado: string = '';
+  varDireccion: string[] = [];      // convertir a una sola
+  varTipoDireccion: string[] = [];  // convertir a una sola
+  varDirCofificada: string[] = [];  // convertir a una sola
   estadoNombrable: boolean = false;
   opcionNombrable: boolean = false;
-  direccionFinal: BotonDireccion[] = [{ nombre: '', abreviatura: '', tipo: '', nombrable: false }];
+  direccionFinal: BotonDireccion[] = [];
   directorioList: BotonDireccion[] = directorio;
   url: string = '';
   document: string = '';
@@ -87,7 +90,7 @@ export class ListadoComponent implements OnInit {
     this.nomPersonalizado = nombre;
     this.cambiarEstadoNombrable(nombrable);
 
-    if (this.direccionFinal[0] === undefined) {
+    if (this.varDireccion[0] === undefined) {
       if (tipo === 'nomenclatura' || tipo === 'opcion') {
         this.llenarDirecciones(boton);
         return false;
@@ -110,9 +113,8 @@ export class ListadoComponent implements OnInit {
   }
 
   validarNomenclaturas(boton: BotonDireccion): void {
-
-    let ultimaPosicion: number = this.direccionFinal.length - 1;
-    let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
+    let ultimaPosicion: number = this.varTipoDireccion.length - 1;
+    let ultimoTipo: string = this.varTipoDireccion[ultimaPosicion];
 
     if (this.validacionInicial(boton)) {
       ultimoTipo === 'nomenclatura' || ultimoTipo === 'opcion'
@@ -123,8 +125,8 @@ export class ListadoComponent implements OnInit {
 
   validarNumeros(boton: BotonDireccion): void {
     let tipo: string = boton.tipo;
-    let ultimaPosicion: number = this.direccionFinal.length - 1;
-    let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
+    let ultimaPosicion: number = this.varTipoDireccion.length - 1;
+    let ultimoTipo: string = this.varTipoDireccion[ultimaPosicion];
 
     if (this.validacionInicial(boton)) {
       tipo === 'numero'
@@ -142,10 +144,10 @@ export class ListadoComponent implements OnInit {
   }
 
   validarLetras(boton: BotonDireccion): void {
-    let ultimaPosicion: number = this.direccionFinal.length - 1;
-    let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
-    let PenUltimoTipo: string = this.direccionFinal[ultimaPosicion - 1].tipo;
-    let ultimoNombre: string = this.direccionFinal[ultimaPosicion].nombre;
+    let ultimaPosicion: number = this.varTipoDireccion.length - 1;
+    let ultimoTipo: string = this.varTipoDireccion[ultimaPosicion];
+    let PenUltimoTipo: string = this.varTipoDireccion[ultimaPosicion - 1];
+    let ultimoNombre: string = this.varDireccion[ultimaPosicion];
 
     if (this.validacionInicial(boton)) {
       (ultimoTipo && PenUltimoTipo) === 'letra'
@@ -162,50 +164,31 @@ export class ListadoComponent implements OnInit {
     }
   }
 
-  imprimirDirecciones(): string {
-
-    let tipoAnterior: string = 'nomenclatura'
-    let impDireccion: string = '';
-    this.direccionFinal.forEach((elemento) => {
-
-      if (elemento.tipo !== tipoAnterior ) {
-        impDireccion += ` ${ elemento.nombre}`;
-      } else {
-        impDireccion += `${elemento.nombre}`;
-      }
-      tipoAnterior = elemento.tipo;
+  imprimirDirecciones(direccion: string[]): string {
+    let impDireccion = '';
+    direccion.forEach((element) => {
+      impDireccion += `${element} `;
     });
-    return impDireccion.trim();
-
-  }
-  imprimirDireccionesCC(): string {
-
-    let tipoAnterior: string = 'nomenclatura'
-    let impDireccion: string = '';
-    this.direccionFinal.forEach((elemento) => {
-
-      if (elemento.tipo !== tipoAnterior ) {
-        impDireccion += ` ${ elemento.abreviatura}`;
-      } else {
-        impDireccion += `${elemento.abreviatura}`;
-      }
-      tipoAnterior = elemento.tipo;
-    });
-    return impDireccion.trim();
-
+    return impDireccion;
   }
 
   llenarDirecciones(boton: BotonDireccion): void {
-    this.direccionFinal.push(boton);
+    this.varDireccion.push(boton.nombre);
+    this.varDirCofificada.push(boton.abreviatura);
+    this.varTipoDireccion.push(boton.tipo);
   }
 
   deshacer(): void {
-    this.direccionFinal.pop();
+    this.varDireccion.pop();
+    this.varDirCofificada.pop();
+    this.varTipoDireccion.pop();
     this.cambiarEstadoNombrable(false);
   }
 
   limpiar(): void {
-    this.direccionFinal = [{ nombre: '', abreviatura: '', tipo: '', nombrable: false }];
+    this.varDireccion = [];
+    this.varDirCofificada = [];
+    this.varTipoDireccion = [];
     this.cambiarEstadoNombrable(false);
   }
 

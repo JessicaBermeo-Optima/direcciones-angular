@@ -1,16 +1,8 @@
 *{
-    margin: 0px;
-    padding: 0px;
     letter-spacing: 1px;
-    font-weight: bold;
+    font-weight: lighter;
     font-family: 'Fredoka', sans-serif;
     font-family: 'Roboto', sans-serif;
-}
-.search_select_box button{
-    background-color: #080342;
-    padding: 15px 25px;
-    color: #ffffff;
-    font-size: 20px;
 }
 
 h1{
@@ -26,29 +18,32 @@ span{
     margin: 5px auto 5px 0px;
 }
 button{
-    color: #34495E;
+    color: #ffffff;
     padding: 0px;
-    border: 1.5px solid #85C1E9;
+    border: 1.5px solid #1D92D1;
     border-radius: 5px;
-    background-color: #EBF5FB;
+    background-color: #6EC7F7;
     margin: 2px 1px 2px 0px;
     transition: 400ms;
 }
 button:hover{
-    background-color: #5DADE2;
     color: #2E4053;
     cursor: pointer;
 }
 input, datalist, select{
-    color: #34495E;
+    color: #2E4053;
     font-size: 12px;
     height: 26px;
+    border: 1.5px solid #1D92D1;
+    border-radius: 5px;
+    outline: none;
+    padding-left: 10px;
 }
 
 
 .top{
     position: fixed;
-    background-color: #D6EAF8;
+    background-color: #ffffff;
     top: 0;
     left: 0;
     right: 0;
@@ -61,11 +56,10 @@ input, datalist, select{
 }
 .top_a input{
     cursor: default;
-    outline: none;
 }
 .top_b{
     display: grid;
-    grid-template-columns: 247px auto 296px;
+    grid-template-columns: 247px auto 429px;
     margin-left: 6%;
     margin-right: 6%;
 }
@@ -76,11 +70,22 @@ input, datalist, select{
 .top_b_nombre{
     grid-column-start: 3;
     display: grid;
+    grid-template-columns: 50px auto 75px;
 }
-.top_b_nombre select{
+.top_b_nombre span{
+    grid-column: 1/3;
+}
+.b_nombre_select{
+    grid-column-start: 1;
     margin: 0px 10px 0px 0px;
+    width: 40px;
+    padding-left: 0px;
+}
+.b_nombre_input{
+    width: 100%;
 }
 .b_nombre_boton{
+    grid-column-start: 3;
     width: 65px;
     height: 26px;
     font-size: 12px;
@@ -90,8 +95,9 @@ input, datalist, select{
     display: grid;
 }
 
+
 .mid{
-    padding-top: 188px;
+    padding: 188px 6% 0% 6%;
 }
 .mid_tablanom{
     display: grid;
@@ -107,7 +113,7 @@ input, datalist, select{
 .boot{
     display: grid;
     grid-template-columns: 70px 140px auto 64px 340px auto ;
-     padding-top: 20px;
+    padding: 20px 6% 3% 6%;
 }
 .boot_tablanum{
     display: grid;
@@ -137,11 +143,23 @@ input, datalist, select{
     justify-content: right;
 }
 .boot_botones_boton{
+    background-color: #69B115;
+    border: #518A0F;
+}
+.boot_botones_boton2{
+    background-color: #273288;
+    border: #1A2260;
+}
+.boot_botones_boton, .boot_botones_boton2{
     font-size: 12px;
     height: 26px;
     width: 80px;
     margin-left: 4px;
 }
+.boot_botones_boton:hover, .boot_botones_boton2:hover{
+    color: #000000;
+}
+
 
 @media(max-width:1320px){
     .mid_tablanom{
@@ -176,6 +194,17 @@ input, datalist, select{
 }
 
 @media (max-width:850px){
+    .top_b{
+        grid-template-columns: 100%;
+    }
+    .top_b_nombre{
+        grid-row: 2;
+        grid-column: 1;
+        grid-template-columns: 50px 300px 75px;
+    }
+    .mid{
+        padding-top: 235px;
+    }
     .mid_tablanom{
         grid-template-columns: repeat(6, 105px);
     }
@@ -192,6 +221,12 @@ input, datalist, select{
 @media (max-width:730px){
     .mid_tablanom{
         grid-template-columns: repeat(5, 105px);
+    }
+    .boot_tablanum{
+        width: 130px;
+    }
+    .boot_tablalet{
+        width: 300px;
     }
     .boot{
         padding-top: 0px;
@@ -214,22 +249,6 @@ input, datalist, select{
         margin-left: 45%;
     }
 }
-@media (max-width:660px) {
-    .top_b{
-        grid-template-columns: 100%;
-    }
-    .top_b_nombre{
-        grid-row: 2;
-        grid-column: 1;
-    }
-    .top_b_nombre input{
-        width: 300px;
-    }
-    .mid{
-        padding-top: 235px;
-    }
-}
-
 @media (max-width:610px){
     .mid_tablanom{
         grid-template-columns: repeat(4, 80px);
@@ -241,14 +260,8 @@ input, datalist, select{
         margin-left: 43%;
     }
 }
-@media(max-width:510px){
-    .boot_titulet{
-        margin-left: 40%;
-    }
-    .boot_titunum{
-        margin-left: 40%;
-    }
-    .top_b_nombre input{
-        width: 200px;
+@media (max-width:500px){
+    .top_b_nombre{
+        grid-template-columns: 50px auto 75px;
     }
 }

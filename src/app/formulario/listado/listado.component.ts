@@ -110,16 +110,28 @@ export class ListadoComponent implements OnInit {
   }
 
   validarNomenclaturas(boton: BotonDireccion): void {
-
+    
+    let nombre: string = boton.nombre;
     let ultimaPosicion: number = this.direccionFinal.length - 1;
-    let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
+    let ultimaNomenclatura: string = this.direccionFinal[ultimaPosicion].nombre;
 
     if (this.validacionInicial(boton)) {
-      ultimoTipo === 'nomenclatura' || ultimoTipo === 'opcion'
-        ? alert('No se puede ingresar 2 nomenclaturas del mismo tipo')
+      ultimaNomenclatura === nombre
+        ? alert('No se puede ingresar 2 nomenclaturas iguales')
         : this.llenarDirecciones(boton);
     }
   }
+  // validarNomenclaturas(boton: BotonDireccion): void {
+
+  //   let ultimaPosicion: number = this.direccionFinal.length - 1;
+  //   let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
+
+  //   if (this.validacionInicial(boton)) {
+  //     ultimoTipo === 'nomenclatura' || ultimoTipo === 'opcion'
+  //       ? alert('No se puede ingresar 2 nomenclaturas del mismo tipo')
+  //       : this.llenarDirecciones(boton);
+  //   }
+  // }
 
   validarNumeros(boton: BotonDireccion): void {
     let tipo: string = boton.tipo;
@@ -162,17 +174,33 @@ export class ListadoComponent implements OnInit {
     }
   }
 
+  // imprimirDirecciones(): string {
+
+  //   let tipoAnterior: string = 'nomenclatura'
+  //   let impDireccion: string = '';
+  //   this.direccionFinal.forEach((elemento) => {
+
+  //     if (elemento.tipo !== tipoAnterior ) {
+  //       impDireccion += ` ${ elemento.nombre}`;
+  //     } else {
+  //       impDireccion += `${elemento.nombre}`;
+  //     }
+  //     tipoAnterior = elemento.tipo;
+  //   });
+  //   return impDireccion.trim();
+
+  // }
+
   imprimirDirecciones(): string {
 
     let tipoAnterior: string = 'nomenclatura'
     let impDireccion: string = '';
     this.direccionFinal.forEach((elemento) => {
 
-      if (elemento.tipo !== tipoAnterior ) {
-        impDireccion += ` ${ elemento.nombre}`;
-      } else {
-        impDireccion += `${elemento.nombre}`;
-      }
+      (elemento.tipo !== tipoAnterior || 
+        ( elemento.tipo === 'nomenclatura' &&  tipoAnterior === 'nomenclatura')) 
+        ? impDireccion += ` ${ elemento.nombre}` 
+      : impDireccion += `${elemento.nombre}`;
       tipoAnterior = elemento.tipo;
     });
     return impDireccion.trim();
@@ -184,16 +212,31 @@ export class ListadoComponent implements OnInit {
     let impDireccion: string = '';
     this.direccionFinal.forEach((elemento) => {
 
-      if (elemento.tipo !== tipoAnterior ) {
-        impDireccion += ` ${ elemento.abreviatura}`;
-      } else {
-        impDireccion += `${elemento.abreviatura}`;
-      }
+      (elemento.tipo !== tipoAnterior || 
+        ( elemento.tipo === 'nomenclatura' &&  tipoAnterior === 'nomenclatura')) 
+        ? impDireccion += ` ${ elemento.abreviatura}` 
+      : impDireccion += `${elemento.abreviatura}`;
       tipoAnterior = elemento.tipo;
     });
     return impDireccion.trim();
 
   }
+  // imprimirDireccionesCC(): string {
+
+  //   let tipoAnterior: string = 'nomenclatura'
+  //   let impDireccion: string = '';
+  //   this.direccionFinal.forEach((elemento) => {
+
+  //     if (elemento.tipo !== tipoAnterior ) {
+  //       impDireccion += ` ${ elemento.abreviatura}`;
+  //     } else {
+  //       impDireccion += `${elemento.abreviatura}`;
+  //     }
+  //     tipoAnterior = elemento.tipo;
+  //   });
+  //   return impDireccion.trim();
+
+  // }
 
   llenarDirecciones(boton: BotonDireccion): void {
     this.direccionFinal.push(boton);

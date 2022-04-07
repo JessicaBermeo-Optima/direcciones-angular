@@ -733,7 +733,7 @@
     },
     {
         "nombre": "#",
-        "abreviatura" : " ",
+        "abreviatura" : "",
         "tipo": "especial",
         "nombrable": false
     },

@@ -162,23 +162,36 @@ export class ListadoComponent implements OnInit {
     }
   }
 
-  imprimirDirecciones1(): string {
+  imprimirDirecciones(): string {
 
+    let tipoAnterior: string = 'nomenclatura'
     let impDireccion: string = '';
-    this.direccionFinal.forEach((element) => {
-      impDireccion += `${element.nombre} `;
+    this.direccionFinal.forEach((elemento) => {
+
+      if (elemento.tipo !== tipoAnterior ) {
+        impDireccion += ` ${ elemento.nombre}`;
+      } else {
+        impDireccion += `${elemento.nombre}`;
+      }
+      tipoAnterior = elemento.tipo;
     });
-    return impDireccion;
+    return impDireccion.trim();
 
   }
+  imprimirDireccionesCC(): string {
 
-  imprimirDirecciones2(): string {
-
+    let tipoAnterior: string = 'nomenclatura'
     let impDireccion: string = '';
-    this.direccionFinal.forEach((element) => {
-      impDireccion += `${element.abreviatura} `;
+    this.direccionFinal.forEach((elemento) => {
+
+      if (elemento.tipo !== tipoAnterior ) {
+        impDireccion += ` ${ elemento.abreviatura}`;
+      } else {
+        impDireccion += `${elemento.abreviatura}`;
+      }
+      tipoAnterior = elemento.tipo;
     });
-    return impDireccion;
+    return impDireccion.trim();
 
   }
 

@@ -17,8 +17,6 @@ export class ListadoComponent implements OnInit {
   opcionSelector: string = '';
   nombreExterno: string = '';
   nomPersonalizado: string = '';
-  varTipoDireccion: string[] = [];  // convertir a una sola
-  varDirCofificada: string[] = [];  // convertir a una sola
   estadoNombrable: boolean = false;
   opcionNombrable: boolean = false;
   direccionFinal: BotonDireccion[] = [{ nombre: '', abreviatura: '', tipo: '', nombrable: false }];
@@ -113,11 +111,8 @@ export class ListadoComponent implements OnInit {
 
   validarNomenclaturas(boton: BotonDireccion): void {
 
-
     let ultimaPosicion: number = this.direccionFinal.length - 1;
     let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
-    // let ultimaPosicion: number = this.varTipoDireccion.length - 1;
-    // let ultimoTipo: string = this.varTipoDireccion[ultimaPosicion];
 
     if (this.validacionInicial(boton)) {
       ultimoTipo === 'nomenclatura' || ultimoTipo === 'opcion'
@@ -128,8 +123,8 @@ export class ListadoComponent implements OnInit {
 
   validarNumeros(boton: BotonDireccion): void {
     let tipo: string = boton.tipo;
-    let ultimaPosicion: number = this.varTipoDireccion.length - 1;
-    let ultimoTipo: string = this.varTipoDireccion[ultimaPosicion];
+    let ultimaPosicion: number = this.direccionFinal.length - 1;
+    let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
 
     if (this.validacionInicial(boton)) {
       tipo === 'numero'
@@ -147,9 +142,9 @@ export class ListadoComponent implements OnInit {
   }
 
   validarLetras(boton: BotonDireccion): void {
-    let ultimaPosicion: number = this.varTipoDireccion.length - 1;
-    let ultimoTipo: string = this.varTipoDireccion[ultimaPosicion];
-    let PenUltimoTipo: string = this.varTipoDireccion[ultimaPosicion - 1];
+    let ultimaPosicion: number = this.direccionFinal.length - 1;
+    let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
+    let PenUltimoTipo: string = this.direccionFinal[ultimaPosicion - 1].tipo;
     let ultimoNombre: string = this.direccionFinal[ultimaPosicion].nombre;
 
     if (this.validacionInicial(boton)) {
@@ -188,23 +183,16 @@ export class ListadoComponent implements OnInit {
   }
 
   llenarDirecciones(boton: BotonDireccion): void {
-    this.varDirCofificada.push(boton.abreviatura);
-    this.varTipoDireccion.push(boton.tipo);
     this.direccionFinal.push(boton);
-    console.log(this.direccionFinal);
   }
 
   deshacer(): void {
-    this.varDirCofificada.pop();
-    this.varTipoDireccion.pop();
     this.direccionFinal.pop();
     this.cambiarEstadoNombrable(false);
   }
 
   limpiar(): void {
-    this.varDirCofificada = [];
-    this.varTipoDireccion = [];
-    this.direccionFinal = [];
+    this.direccionFinal = [{ nombre: '', abreviatura: '', tipo: '', nombrable: false }];
     this.cambiarEstadoNombrable(false);
   }
 

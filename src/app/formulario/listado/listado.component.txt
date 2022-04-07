@@ -17,11 +17,12 @@ export class ListadoComponent implements OnInit {
   opcionSelector: string = '';
   nombreExterno: string = '';
   nomPersonalizado: string = '';
+  varDireccion: string[] = [];      // convertir a una sola
   varTipoDireccion: string[] = [];  // convertir a una sola
   varDirCofificada: string[] = [];  // convertir a una sola
   estadoNombrable: boolean = false;
   opcionNombrable: boolean = false;
-  direccionFinal: BotonDireccion[] = [{ nombre: '', abreviatura: '', tipo: '', nombrable: false }];
+  direccionFinal: BotonDireccion[] = [];
   directorioList: BotonDireccion[] = directorio;
   url: string = '';
   document: string = '';
@@ -89,7 +90,7 @@ export class ListadoComponent implements OnInit {
     this.nomPersonalizado = nombre;
     this.cambiarEstadoNombrable(nombrable);
 
-    if (this.direccionFinal[0] === undefined) {
+    if (this.varDireccion[0] === undefined) {
       if (tipo === 'nomenclatura' || tipo === 'opcion') {
         this.llenarDirecciones(boton);
         return false;
@@ -112,12 +113,8 @@ export class ListadoComponent implements OnInit {
   }
 
   validarNomenclaturas(boton: BotonDireccion): void {
-
-
-    let ultimaPosicion: number = this.direccionFinal.length - 1;
-    let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
-    // let ultimaPosicion: number = this.varTipoDireccion.length - 1;
-    // let ultimoTipo: string = this.varTipoDireccion[ultimaPosicion];
+    let ultimaPosicion: number = this.varTipoDireccion.length - 1;
+    let ultimoTipo: string = this.varTipoDireccion[ultimaPosicion];
 
     if (this.validacionInicial(boton)) {
       ultimoTipo === 'nomenclatura' || ultimoTipo === 'opcion'
@@ -150,7 +147,7 @@ export class ListadoComponent implements OnInit {
     let ultimaPosicion: number = this.varTipoDireccion.length - 1;
     let ultimoTipo: string = this.varTipoDireccion[ultimaPosicion];
     let PenUltimoTipo: string = this.varTipoDireccion[ultimaPosicion - 1];
-    let ultimoNombre: string = this.direccionFinal[ultimaPosicion].nombre;
+    let ultimoNombre: string = this.varDireccion[ultimaPosicion];
 
     if (this.validacionInicial(boton)) {
       (ultimoTipo && PenUltimoTipo) === 'letra'
@@ -167,44 +164,31 @@ export class ListadoComponent implements OnInit {
     }
   }
 
-  imprimirDirecciones1(): string {
-
-    let impDireccion: string = '';
-    this.direccionFinal.forEach((element) => {
-      impDireccion += `${element.nombre} `;
+  imprimirDirecciones(direccion: string[]): string {
+    let impDireccion = '';
+    direccion.forEach((element) => {
+      impDireccion += `${element} `;
     });
     return impDireccion;
-
-  }
-
-  imprimirDirecciones2(): string {
-
-    let impDireccion: string = '';
-    this.direccionFinal.forEach((element) => {
-      impDireccion += `${element.abreviatura} `;
-    });
-    return impDireccion;
-
   }
 
   llenarDirecciones(boton: BotonDireccion): void {
+    this.varDireccion.push(boton.nombre);
     this.varDirCofificada.push(boton.abreviatura);
     this.varTipoDireccion.push(boton.tipo);
-    this.direccionFinal.push(boton);
-    console.log(this.direccionFinal);
   }
 
   deshacer(): void {
+    this.varDireccion.pop();
     this.varDirCofificada.pop();
     this.varTipoDireccion.pop();
-    this.direccionFinal.pop();
     this.cambiarEstadoNombrable(false);
   }
 
   limpiar(): void {
+    this.varDireccion = [];
     this.varDirCofificada = [];
     this.varTipoDireccion = [];
-    this.direccionFinal = [];
     this.cambiarEstadoNombrable(false);
   }
 

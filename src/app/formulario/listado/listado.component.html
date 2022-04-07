@@ -1,9 +1,9 @@
 <header class="top">
     <article class="top_a">
         <span>Dirección:</span>
-        <input type="text" [value]="imprimirDirecciones(varDireccion)" readonly>
+        <input type="text" [value]="imprimirDirecciones1()" readonly>
         <span>Dirección con codificación Dian:</span>
-        <input type="text" [value]="imprimirDirecciones(varDirCofificada)" readonly>
+        <input type="text" [value]="imprimirDirecciones2()" readonly>
     </article>
     <article class="top_b">
         <article class="top_b_buscar">
@@ -14,9 +14,9 @@
             </datalist>
         </article>
         <article class="top_b_nombre" *ngIf="estadoNombrable">
-            <span> $nombre con nombre?</span>
+            <span> {{nomPersonalizado}} con nombre?</span>
             <form (ngSubmit)="validarNombrable()">
-                <select class="b_nombre_select" [(ngModel)]="opcionNombrable" (change)="cambiarEstadoNombrable(opcionNombrable)" name="opcionNombrable1">
+                <select class="b_nombre_select" [(ngModel)]="opcionNombrable" (change)="cambiarEstadoNombrable(opcionNombrable)" name="opcionNombrable">
                     <option value="true" selected> Si</option>
                     <option value="">No</option>
                 </select>

@@ -80,16 +80,17 @@ export class ListadoComponent implements OnInit {
   }
 
   validacionInicial(boton: BotonDireccion): boolean {
-    let tipo: string = boton.tipo;
-    let nombre : string  = boton.nombre;
-    let nombrable: boolean = boton.nombrable;
+    let tipoBoton: string = boton.tipo;
+    let nombreBoton : string  = boton.nombre;
+    let nombrableBoton: boolean = boton.nombrable;
     
-    this.nomPersonalizado = nombre;
-    this.cambiarEstadoNombrable(nombrable);
+    this.nomPersonalizado = nombreBoton;
+    this.cambiarEstadoNombrable(nombrableBoton);
 
-    if (this.direccionFinal[0] === undefined) {
-      if (tipo === 'nomenclatura' || tipo === 'opcion') {
-        this.llenarDirecciones(boton);
+    if (this.direccionFinal[0].tipo === '') {
+      if (tipoBoton === 'nomenclatura' || tipoBoton === 'opcion') {
+        this.direccionFinal[0] = boton;
+        console.log(this.direccionFinal);
         return false;
       } else {
         alert('Debe ser tipo nomenclatura');
@@ -111,12 +112,12 @@ export class ListadoComponent implements OnInit {
 
   validarNomenclaturas(boton: BotonDireccion): void {
     
-    let nombre: string = boton.nombre;
+    let nombreBoton: string = boton.nombre;
     let ultimaPosicion: number = this.direccionFinal.length - 1;
     let ultimaNomenclatura: string = this.direccionFinal[ultimaPosicion].nombre;
 
     if (this.validacionInicial(boton)) {
-      ultimaNomenclatura === nombre
+      ultimaNomenclatura === nombreBoton
         ? alert('No se puede ingresar 2 nomenclaturas iguales')
         : this.llenarDirecciones(boton);
     }
@@ -134,44 +135,50 @@ export class ListadoComponent implements OnInit {
   // }
 
   validarNumeros(boton: BotonDireccion): void {
-    let tipo: string = boton.tipo;
+    let tipoBoton: string = boton.tipo;
     let ultimaPosicion: number = this.direccionFinal.length - 1;
     let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
 
     if (this.validacionInicial(boton)) {
-      tipo === 'numero'
+      tipoBoton === 'numero'
         ? this.llenarDirecciones(boton)
         : this.validarUltimoTipo(ultimoTipo, boton);
     }
   }
 
   validarUltimoTipo(ultimoTipo: string, boton: BotonDireccion): void {
-    if (ultimoTipo === 'especial') {
-      alert('No se puede ingresar 2 nomenclaturas especiales');
-    } else {
-      this.llenarDirecciones(boton);
-    }
+    ultimoTipo === 'especial'
+      ? alert('No se puede ingresar 2 nomenclaturas especiales')
+      : this.llenarDirecciones(boton);
   }
 
   validarLetras(boton: BotonDireccion): void {
-    let ultimaPosicion: number = this.direccionFinal.length - 1;
-    let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
-    let PenUltimoTipo: string = this.direccionFinal[ultimaPosicion - 1].tipo;
-    let ultimoNombre: string = this.direccionFinal[ultimaPosicion].nombre;
+
+    let tamañoDireccion: number = this.direccionFinal.length;
+    let ultimaPosicion: number = tamañoDireccion - 1;
 
     if (this.validacionInicial(boton)) {
-      (ultimoTipo && PenUltimoTipo) === 'letra'
-        ? alert('No se puede ingresar 3 letras seguidas')
-        : this.validarUltimoNombre(ultimoNombre, boton);
+      tamañoDireccion > 2
+        ? this.validarPenultimoTipo(ultimaPosicion, boton)
+        : this.validarUltimoNombre(ultimaPosicion, boton);
     }
   }
 
-  validarUltimoNombre(ultimoNombre: string, boton: BotonDireccion): void {
-    if (ultimoNombre === boton.nombre) {
-      alert('No se puede ingresar 2 letras iguales');
-    } else {
-      this.llenarDirecciones(boton);
-    }
+  validarPenultimoTipo( ultimaPosicion:number , boton: BotonDireccion): void {
+    
+    let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
+    let PenUltimoTipo: string = this.direccionFinal[ultimaPosicion - 1].tipo;
+
+    (ultimoTipo === 'letra' && PenUltimoTipo === 'letra')
+      ? alert('No se puede ingresar 3 letras seguidas')
+      : this.validarUltimoNombre(ultimaPosicion, boton);
+
+  }
+  validarUltimoNombre( ultimaPosicion:number , boton: BotonDireccion): void {
+    let ultimoNombre: string = this.direccionFinal[ultimaPosicion].nombre;
+    ultimoNombre === boton.nombre
+      ? alert('No se puede ingresar 2 letras iguales')
+      : this.llenarDirecciones(boton);
   }
 
   // imprimirDirecciones(): string {
@@ -240,16 +247,23 @@ export class ListadoComponent implements OnInit {
 
   llenarDirecciones(boton: BotonDireccion): void {
     this.direccionFinal.push(boton);
+    console.log(this.direccionFinal);
   }
 
   deshacer(): void {
-    this.direccionFinal.pop();
+    if (this.direccionFinal.length === 1) {
+      this.direccionFinal[0] = { nombre: '', abreviatura: '', tipo: '', nombrable: false };
+    } else {
+      this.direccionFinal.pop();
+    }
     this.cambiarEstadoNombrable(false);
+    console.log(this.direccionFinal);
   }
 
   limpiar(): void {
     this.direccionFinal = [{ nombre: '', abreviatura: '', tipo: '', nombrable: false }];
     this.cambiarEstadoNombrable(false);
+    console.log(this.direccionFinal);
   }
 
   enviar(): void {

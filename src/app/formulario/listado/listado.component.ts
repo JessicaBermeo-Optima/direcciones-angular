@@ -73,11 +73,22 @@ export class ListadoComponent implements OnInit {
         tipo: 'otro',
         nombrable: false,
       };
-      this.llenarDirecciones(boton);
-      this.estadoNombrable = false;
-      this.nombreExterno = '';
+      
+      this.validarNombrableInicial(boton);
     }
   }
+
+  validarNombrableInicial(boton: BotonDireccion){
+    this.direccionFinal[0].nombre === ''
+      ? this.direccionFinal[0] = boton
+      : this.llenarDirecciones(boton);
+
+    this.estadoNombrable = false;
+    this.nombreExterno = '';
+    console.log(this.direccionFinal);
+  }
+
+
 
   validacionInicial(boton: BotonDireccion): boolean {
     let tipoBoton: string = boton.tipo;
@@ -90,7 +101,6 @@ export class ListadoComponent implements OnInit {
     if (this.direccionFinal[0].tipo === '') {
       if (tipoBoton === 'nomenclatura' || tipoBoton === 'opcion') {
         this.direccionFinal[0] = boton;
-        console.log(this.direccionFinal);
         return false;
       } else {
         alert('Debe ser tipo nomenclatura');
@@ -106,8 +116,11 @@ export class ListadoComponent implements OnInit {
       (dir) => dir.nombre === dato
     ) || { nombre: '0', abreviatura: '0', tipo: '0', nombrable: false };
 
+    dato !== 'OTRA NOMENCLATURA' 
+    ? this.validarNomenclaturas(boton)
+    : this.estadoNombrable = true;
+
     this.opcionSelector = '';
-    this.validarNomenclaturas(boton);
   }
 
   validarNomenclaturas(boton: BotonDireccion): void {
@@ -204,7 +217,7 @@ export class ListadoComponent implements OnInit {
     let impDireccion: string = '';
     this.direccionFinal.forEach((elemento) => {
 
-      (elemento.tipo !== tipoAnterior || 
+      (elemento.tipo !== tipoAnterior || elemento.tipo === 'otro' ||
         ( elemento.tipo === 'nomenclatura' &&  tipoAnterior === 'nomenclatura')) 
         ? impDireccion += ` ${ elemento.nombre}` 
       : impDireccion += `${elemento.nombre}`;
@@ -219,12 +232,13 @@ export class ListadoComponent implements OnInit {
     let impDireccion: string = '';
     this.direccionFinal.forEach((elemento) => {
 
-      (elemento.tipo !== tipoAnterior || 
+      (elemento.tipo !== tipoAnterior || elemento.tipo === 'otro' ||
         ( elemento.tipo === 'nomenclatura' &&  tipoAnterior === 'nomenclatura')) 
         ? impDireccion += ` ${ elemento.abreviatura}` 
       : impDireccion += `${elemento.abreviatura}`;
       tipoAnterior = elemento.tipo;
     });
+
     return impDireccion.trim();
 
   }

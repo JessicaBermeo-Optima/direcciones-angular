@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+// import { MatDialogRef } from '@angular/material';
 import directorio from '../../files/directorio.json';
 
 interface BotonDireccion {
@@ -40,7 +41,8 @@ export class ListadoComponent implements OnInit {
     return dir.tipo === 'letra';
   });
 
-  constructor(private _route: ActivatedRoute) {
+  constructor(private _route: ActivatedRoute ) {
+  // constructor(private _route: ActivatedRoute, public dialogRef: MatDialogRef<ListadoComponent>) {
     console.log('Constructor de direcciones');
   }
   ngOnInit(): void {
@@ -73,12 +75,12 @@ export class ListadoComponent implements OnInit {
         tipo: 'otro',
         nombrable: false,
       };
-      
+
       this.validarNombrableInicial(boton);
     }
   }
 
-  validarNombrableInicial(boton: BotonDireccion){
+  validarNombrableInicial(boton: BotonDireccion) {
     this.direccionFinal[0].nombre === ''
       ? this.direccionFinal[0] = boton
       : this.llenarDirecciones(boton);
@@ -88,13 +90,11 @@ export class ListadoComponent implements OnInit {
     console.log(this.direccionFinal);
   }
 
-
-
   validacionInicial(boton: BotonDireccion): boolean {
     let tipoBoton: string = boton.tipo;
-    let nombreBoton : string  = boton.nombre;
+    let nombreBoton: string = boton.nombre;
     let nombrableBoton: boolean = boton.nombrable;
-    
+
     this.nomPersonalizado = nombreBoton;
     this.cambiarEstadoNombrable(nombrableBoton);
 
@@ -116,15 +116,15 @@ export class ListadoComponent implements OnInit {
       (dir) => dir.nombre === dato
     ) || { nombre: '0', abreviatura: '0', tipo: '0', nombrable: false };
 
-    dato !== 'OTRA NOMENCLATURA' 
-    ? this.validarNomenclaturas(boton)
-    : this.estadoNombrable = true;
+    dato !== 'OTRA NOMENCLATURA'
+      ? this.validarNomenclaturas(boton)
+      : this.estadoNombrable = true;
 
     this.opcionSelector = '';
   }
 
   validarNomenclaturas(boton: BotonDireccion): void {
-    
+
     let nombreBoton: string = boton.nombre;
     let ultimaPosicion: number = this.direccionFinal.length - 1;
     let ultimaNomenclatura: string = this.direccionFinal[ultimaPosicion].nombre;
@@ -135,17 +135,6 @@ export class ListadoComponent implements OnInit {
         : this.llenarDirecciones(boton);
     }
   }
-  // validarNomenclaturas(boton: BotonDireccion): void {
-
-  //   let ultimaPosicion: number = this.direccionFinal.length - 1;
-  //   let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
-
-  //   if (this.validacionInicial(boton)) {
-  //     ultimoTipo === 'nomenclatura' || ultimoTipo === 'opcion'
-  //       ? alert('No se puede ingresar 2 nomenclaturas del mismo tipo')
-  //       : this.llenarDirecciones(boton);
-  //   }
-  // }
 
   validarNumeros(boton: BotonDireccion): void {
     let tipoBoton: string = boton.tipo;
@@ -177,8 +166,8 @@ export class ListadoComponent implements OnInit {
     }
   }
 
-  validarPenultimoTipo( ultimaPosicion:number , boton: BotonDireccion): void {
-    
+  validarPenultimoTipo(ultimaPosicion: number, boton: BotonDireccion): void {
+
     let ultimoTipo: string = this.direccionFinal[ultimaPosicion].tipo;
     let PenUltimoTipo: string = this.direccionFinal[ultimaPosicion - 1].tipo;
 
@@ -187,29 +176,12 @@ export class ListadoComponent implements OnInit {
       : this.validarUltimoNombre(ultimaPosicion, boton);
 
   }
-  validarUltimoNombre( ultimaPosicion:number , boton: BotonDireccion): void {
+  validarUltimoNombre(ultimaPosicion: number, boton: BotonDireccion): void {
     let ultimoNombre: string = this.direccionFinal[ultimaPosicion].nombre;
     ultimoNombre === boton.nombre
       ? alert('No se puede ingresar 2 letras iguales')
       : this.llenarDirecciones(boton);
   }
-
-  // imprimirDirecciones(): string {
-
-  //   let tipoAnterior: string = 'nomenclatura'
-  //   let impDireccion: string = '';
-  //   this.direccionFinal.forEach((elemento) => {
-
-  //     if (elemento.tipo !== tipoAnterior ) {
-  //       impDireccion += ` ${ elemento.nombre}`;
-  //     } else {
-  //       impDireccion += `${elemento.nombre}`;
-  //     }
-  //     tipoAnterior = elemento.tipo;
-  //   });
-  //   return impDireccion.trim();
-
-  // }
 
   imprimirDirecciones(): string {
 
@@ -218,9 +190,9 @@ export class ListadoComponent implements OnInit {
     this.direccionFinal.forEach((elemento) => {
 
       (elemento.tipo !== tipoAnterior || elemento.tipo === 'otro' ||
-        ( elemento.tipo === 'nomenclatura' &&  tipoAnterior === 'nomenclatura')) 
-        ? impDireccion += ` ${ elemento.nombre}` 
-      : impDireccion += `${elemento.nombre}`;
+        (elemento.tipo === 'nomenclatura' && tipoAnterior === 'nomenclatura'))
+        ? impDireccion += ` ${elemento.nombre}`
+        : impDireccion += `${elemento.nombre}`;
       tipoAnterior = elemento.tipo;
     });
     return impDireccion.trim();
@@ -233,31 +205,15 @@ export class ListadoComponent implements OnInit {
     this.direccionFinal.forEach((elemento) => {
 
       (elemento.tipo !== tipoAnterior || elemento.tipo === 'otro' ||
-        ( elemento.tipo === 'nomenclatura' &&  tipoAnterior === 'nomenclatura')) 
-        ? impDireccion += ` ${ elemento.abreviatura}` 
-      : impDireccion += `${elemento.abreviatura}`;
+        (elemento.tipo === 'nomenclatura' && tipoAnterior === 'nomenclatura'))
+        ? impDireccion += ` ${elemento.abreviatura}`
+        : impDireccion += `${elemento.abreviatura}`;
       tipoAnterior = elemento.tipo;
     });
 
     return impDireccion.trim();
 
   }
-  // imprimirDireccionesCC(): string {
-
-  //   let tipoAnterior: string = 'nomenclatura'
-  //   let impDireccion: string = '';
-  //   this.direccionFinal.forEach((elemento) => {
-
-  //     if (elemento.tipo !== tipoAnterior ) {
-  //       impDireccion += ` ${ elemento.abreviatura}`;
-  //     } else {
-  //       impDireccion += `${elemento.abreviatura}`;
-  //     }
-  //     tipoAnterior = elemento.tipo;
-  //   });
-  //   return impDireccion.trim();
-
-  // }
 
   llenarDirecciones(boton: BotonDireccion): void {
     this.direccionFinal.push(boton);
@@ -281,16 +237,21 @@ export class ListadoComponent implements OnInit {
   }
 
   enviar(): void {
-    const form = document.createElement('form');
-    form.method = 'post';
-    form.action = 'http://example.com/'; //Aquí va la URL del proyecto al que le va a llegar el dato
+    // const form = document.createElement('form');
+    // form.method = 'post';
+    // form.action = 'http://example.com/'; //Aquí va la URL del proyecto al que le va a llegar el dato
 
-    const hiddenField = document.createElement('input');
-    hiddenField.type = 'hidden';
-    hiddenField.name = 'test';
-    hiddenField.value = 'testeando la aplicacion';
+    // const hiddenField = document.createElement('input');
+    // hiddenField.type = 'hidden';
+    // hiddenField.name = 'test';
+    // hiddenField.value = 'testeando la aplicacion';
 
-    document.body.appendChild(form);
-    form.submit();
+    // document.body.appendChild(form);
+    // form.submit();
+
+
+    // ESTE ES EL DATO QUE SE VA A ENVIAR
+    // this.dialogRef.close(this.imprimirDireccionesCC());
+    console.log(this.imprimirDireccionesCC());
   }
 }

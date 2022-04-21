@@ -25,6 +25,8 @@ export class ListadoComponent implements OnInit {
   url: string = '';
   document: string = '';
 
+  disableInput:boolean = true;
+
   datosSelector: BotonDireccion[] = this.directorioList.filter((dir) => {
     return dir.tipo === 'opcion' || dir.tipo === 'nomenclatura';
   });
@@ -49,19 +51,20 @@ export class ListadoComponent implements OnInit {
     this._route.queryParams.subscribe((params) => {
       this.url = params['url'];
       this.document = params['document'];
-    });
+    });    
   }
 
   cambiarEstadoNombrable(estado: boolean): void {
     this.estadoNombrable = Boolean(estado);
-    this.opcionNombrable = false;
+    if(this.opcionNombrable){this.disableInput=false}
+    this.opcionNombrable = false;  
   }
 
-  eliminarEspaciosNombrable(){
-    this.nombreExterno = this.nombreExterno.includes('  ')
-      ? this.nombreExterno.replace('  ', ' ')
-      : this.nombreExterno
-  }
+  // eliminarEspaciosNombrable(){
+  //   this.nombreExterno = this.nombreExterno.includes('  ')
+  //     ? this.nombreExterno.replace('  ', ' ')
+  //     : this.nombreExterno
+  // }
 
   validarNombrable() {
     let regexObj1 = /(?=.*\d+)/;
@@ -88,6 +91,7 @@ export class ListadoComponent implements OnInit {
   }
 
   validarNombrableInicial(boton: BotonDireccion) {
+    this.opcionNombrable = true;
     if (this.direccionFinal[0].nombre === '') {
       this.direccionFinal[0] = boton;
     } else {
@@ -95,6 +99,9 @@ export class ListadoComponent implements OnInit {
     }
     this.estadoNombrable = false;
     this.nombreExterno = '';
+    this.disableInput = true;
+    this.opcionNombrable = false;
+    this.nomPersonalizado = ''; 
   }
 
   validacionInicial(boton: BotonDireccion): boolean {
@@ -241,12 +248,14 @@ export class ListadoComponent implements OnInit {
     } else {
       this.direccionFinal.pop();
     }
-    this.cambiarEstadoNombrable(false);
+    this.cambiarEstadoNombrable(false); 
+    this.nomPersonalizado = '';   
   }
 
   limpiar(): void {
     this.direccionFinal = [{ nombre: '', abreviatura: '', tipo: '', nombrable: false }];
     this.cambiarEstadoNombrable(false);
+    this.nomPersonalizado = '';     
   }
 
   enviar(): void {

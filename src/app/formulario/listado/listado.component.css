@@ -1,27 +1,56 @@
+@charset "utf-8";
+
+@font-face { 
+font-family: 'FuturaStdMediumBold';
+src: url('../../files/fonts/futurastd-heavy-webfont.eot?#iefix') format('embedded-opentype'), 
+  url('../../files/fonts/futurastd-heavy-webfont.woff') format('woff'), 
+  url('../../files/fonts/futurastd-heavy-webfont.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+font-family: 'FuturaLT';
+src: url('../../files/fonts/FuturaLT.eot?#iefix') format('embedded-opentype'), 
+  url('../../files/fonts/FuturaLT.woff') format('woff'), 
+  url('../../files/fonts/FuturaLT.ttf') format('truetype'), 
+  url('../../files/fonts/FuturaLT.svg#FuturaLT') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+*{
+    font-family: "FuturaLT", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+
 h1{
     color: #34495E;
     margin: 0px;
     text-align: left;
     font-size: 18px;
     margin: 10px auto 10px 0px;
+    font-weight: bold;
 }
 span{
-    font-size: 12px;
+    font-size: 14px;
     color: #34495E;
     margin: 5px auto 5px 0px;
+    font-weight: bold;
 }
 button{
-    color: #ffffff;
+    color: #34495E;
     padding: 0px;
     border: 1.5px solid #1D92D1;
     border-radius: 5px;
-    font-weight: 600;
-    background-color: #6EC7F7;
+    font-weight: 500;
+    background-color: #ffffff;
     margin: 2px 1px 2px 0px;
     transition: 400ms;
 }
 button:hover{
-    color: #2E4053;
+    color: #ffffff;
+    background-color: #6EC7F7;
     cursor: pointer;
 }
 input, datalist, select{
@@ -84,6 +113,7 @@ input, datalist, select{
     height: 26px;
     font-size: 12px;
     margin: 0px 0px 0px 10px;
+    color: #ffffff;
     background-color: #273288;
     border: #1A2260;
 }
@@ -98,7 +128,7 @@ input, datalist, select{
 .mid_tablanom{
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(11, 105px);
+    grid-template-columns: repeat(13, 105px);
 }
 .mid_tablanom_boton{
     font-size: 10px;
@@ -147,16 +177,31 @@ input, datalist, select{
     border: #1A2260;
 }
 .boot_botones_boton, .boot_botones_boton2{
+    color: #ffffff;
     font-size: 12px;
     height: 26px;
     width: 80px;
     margin-left: 4px;
 }
-.boot_botones_boton:hover, .boot_botones_boton2:hover{
+.boot_botones_boton2:hover, .b_nombre_boton:hover{
     color: #000000;
+}
+.boot_botones_boton:hover{
+    background-color: #508118;
 }
 
 
+@media(max-width:1510px){
+    .mid_tablanom{
+        grid-template-columns: repeat(12, 105px);
+    }
+    
+}
+@media(max-width:1440px){
+    .mid_tablanom{
+        grid-template-columns: repeat(11, 105px);
+    }
+}
 @media(max-width:1320px){
     .mid_tablanom{
         grid-template-columns: repeat(10, 105px);

@@ -16,6 +16,7 @@
         <form (ngSubmit)="validarNombrable()" class="top_b_nombre" *ngIf="estadoNombrable">
             <span> {{nomPersonalizado}} con nombre?</span>
             <select class="b_nombre_select" [(ngModel)]="opcionNombrable" (change)="cambiarEstadoNombrable(opcionNombrable)" name="opcionNombrable">
+                <option value="" selected>Seleccione</option>
                 <option value="true" selected> Si</option>
                 <option value="">No</option>
             </select>
@@ -31,7 +32,7 @@
     </article>
 </section>
 <section class="boot">
-    <h1 class="boot_titunum">Digitos</h1>
+    <h1 class="boot_titunum">Dígitos</h1>
     <article class="boot_tablanum" id="tabla_num">
         <button *ngFor="let dato of datosNumeros" class="boot_boton" (click)="validarNumeros(dato)">{{dato.nombre}}</button>
     </article>

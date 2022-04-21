@@ -57,6 +57,12 @@ export class ListadoComponent implements OnInit {
     this.opcionNombrable = false;
   }
 
+  eliminarEspaciosNombrable(){
+    this.nombreExterno = this.nombreExterno.includes('  ')
+      ? this.nombreExterno.replace('  ', ' ')
+      : this.nombreExterno
+  }
+
   validarNombrable() {
     let regexObj1 = /(?=.*\d+)/;
     let regexObj2 = /(?=.*[!@#$%&*]+)/;
@@ -66,9 +72,10 @@ export class ListadoComponent implements OnInit {
     ) {
       alert('El nombre no puede contener numeros o caracteres especiales');
       this.nombreExterno = '';
-    } if (this.nombreExterno === '') {
+    } else if (this.nombreExterno === '') {
       alert('El nombre no puede estar vacio');
     } else {
+
       let boton: BotonDireccion = {
         nombre: this.nombreExterno,
         abreviatura: this.nombreExterno,
@@ -81,13 +88,13 @@ export class ListadoComponent implements OnInit {
   }
 
   validarNombrableInicial(boton: BotonDireccion) {
-    this.direccionFinal[0].nombre === ''
-      ? this.direccionFinal[0] = boton
-      : this.llenarDirecciones(boton);
-
+    if (this.direccionFinal[0].nombre === '') {
+      this.direccionFinal[0] = boton;
+    } else {
+      this.llenarDirecciones(boton);
+    }
     this.estadoNombrable = false;
     this.nombreExterno = '';
-    console.log(this.direccionFinal);
   }
 
   validacionInicial(boton: BotonDireccion): boolean {
@@ -116,9 +123,11 @@ export class ListadoComponent implements OnInit {
       (dir) => dir.nombre === dato
     ) || { nombre: '0', abreviatura: '0', tipo: '0', nombrable: false };
 
-    dato !== 'OTRA NOMENCLATURA'
-      ? this.validarNomenclaturas(boton)
-      : this.estadoNombrable = true;
+    if (dato !== 'OTRA NOMENCLATURA') {
+      this.validarNomenclaturas(boton);
+    } else {
+      this.estadoNombrable = true;
+    }
 
     this.opcionSelector = '';
   }
@@ -189,35 +198,41 @@ export class ListadoComponent implements OnInit {
     let impDireccion: string = '';
     this.direccionFinal.forEach((elemento) => {
 
-      (elemento.tipo !== tipoAnterior || elemento.tipo === 'otro' ||
-        (elemento.tipo === 'nomenclatura' && tipoAnterior === 'nomenclatura'))
-        ? impDireccion += ` ${elemento.nombre}`
-        : impDireccion += `${elemento.nombre}`;
+      if ((elemento.tipo !== tipoAnterior || elemento.tipo === 'otro') ||
+      (elemento.tipo === 'nomenclatura' && tipoAnterior === 'nomenclatura')) {
+        impDireccion += ` ${elemento.nombre}`;
+      } else {
+        impDireccion += `${elemento.nombre}`;
+      }
+      
       tipoAnterior = elemento.tipo;
     });
-    return impDireccion.trim();
+    return impDireccion.trim().toUpperCase() ;
 
   }
+
   imprimirDireccionesCC(): string {
 
     let tipoAnterior: string = 'nomenclatura'
     let impDireccion: string = '';
     this.direccionFinal.forEach((elemento) => {
 
-      (elemento.tipo !== tipoAnterior || elemento.tipo === 'otro' ||
-        (elemento.tipo === 'nomenclatura' && tipoAnterior === 'nomenclatura'))
-        ? impDireccion += ` ${elemento.abreviatura}`
-        : impDireccion += `${elemento.abreviatura}`;
+      if ((elemento.tipo !== tipoAnterior || elemento.tipo === 'otro' ||
+      (elemento.tipo === 'nomenclatura' && tipoAnterior === 'nomenclatura'))) {
+        impDireccion += ` ${elemento.abreviatura}`;
+      } else {
+        impDireccion += `${elemento.abreviatura}`;
+      }
+  
       tipoAnterior = elemento.tipo;
     });
 
-    return impDireccion.trim();
+    return impDireccion.trim().toUpperCase();
 
   }
 
   llenarDirecciones(boton: BotonDireccion): void {
     this.direccionFinal.push(boton);
-    console.log(this.direccionFinal);
   }
 
   deshacer(): void {
@@ -227,13 +242,11 @@ export class ListadoComponent implements OnInit {
       this.direccionFinal.pop();
     }
     this.cambiarEstadoNombrable(false);
-    console.log(this.direccionFinal);
   }
 
   limpiar(): void {
     this.direccionFinal = [{ nombre: '', abreviatura: '', tipo: '', nombrable: false }];
     this.cambiarEstadoNombrable(false);
-    console.log(this.direccionFinal);
   }
 
   enviar(): void {

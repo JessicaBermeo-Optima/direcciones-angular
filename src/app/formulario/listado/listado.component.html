@@ -16,6 +16,7 @@
         <form (ngSubmit)="validarNombrable()" class="top_b_nombre" *ngIf="estadoNombrable">
             <span> {{nomPersonalizado}} con nombre?</span>
             <select class="b_nombre_select" [(ngModel)]="opcionNombrable" (change)="cambiarEstadoNombrable(opcionNombrable)" name="opcionNombrable">
+                <option value="false">Seleccione</option>
                 <option value="true" selected> Si</option>
                 <option value="">No</option>
             </select>

@@ -1,10 +1,3 @@
-*{
-    letter-spacing: 1px;
-    font-weight: lighter;
-    font-family: 'Fredoka', sans-serif;
-    font-family: 'Roboto', sans-serif;
-}
-
 h1{
     color: #34495E;
     margin: 0px;
@@ -22,6 +15,7 @@ button{
     padding: 0px;
     border: 1.5px solid #1D92D1;
     border-radius: 5px;
+    font-weight: 600;
     background-color: #6EC7F7;
     margin: 2px 1px 2px 0px;
     transition: 400ms;
@@ -90,6 +84,8 @@ input, datalist, select{
     height: 26px;
     font-size: 12px;
     margin: 0px 0px 0px 10px;
+    background-color: #273288;
+    border: #1A2260;
 }
 .top_a, .top_b_buscar{
     display: grid;

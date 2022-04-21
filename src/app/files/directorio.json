@@ -133,7 +133,7 @@
     },
     {
         "nombre": "Carretera",
-        "abreviatura" : "CARR",
+        "abreviatura" : "CRT",
         "tipo": "nomenclatura",
         "nombrable": true
     },
@@ -199,7 +199,7 @@
     },
     {
         "nombre": "Corregimiento",
-        "abreviatura" : "CORR",
+        "abreviatura" : "CRR",
         "tipo": "nomenclatura",
         "nombrable": true
     },

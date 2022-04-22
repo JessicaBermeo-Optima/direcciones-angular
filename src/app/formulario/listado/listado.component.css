@@ -39,7 +39,7 @@ span{
     font-weight: bold;
 }
 button{
-    color: #34495E;
+    color: #000000;
     padding: 0px;
     border: 1.5px solid #1D92D1;
     border-radius: 5px;
@@ -233,7 +233,6 @@ input, datalist, select{
         grid-template-columns: repeat(7, 105px);
     }
 }
-
 @media (max-width:850px){
     .top_b{
         grid-template-columns: 100%;

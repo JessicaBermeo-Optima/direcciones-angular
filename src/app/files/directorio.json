@@ -493,7 +493,7 @@
     },
     {
         "nombre": "Plaza de mercado",
-        "abreviatura" : "ZF",
+        "abreviatura" : "PM",
         "tipo": "opcion",
         "nombrable": false
     },
@@ -656,7 +656,7 @@
     {
         "nombre": "Vía",
         "abreviatura" : "VIA",
-        "tipo": "opcion",
+        "tipo": "nomenclatura",
         "nombrable": true
     },
     {
@@ -673,7 +673,7 @@
     },
     {
         "nombre": "Zona franca",
-        "abreviatura" : "PM",
+        "abreviatura" : "ZF",
         "tipo": "nomenclatura",
         "nombrable": true
     },

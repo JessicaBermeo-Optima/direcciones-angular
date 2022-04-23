@@ -4,26 +4,28 @@ import { ActivatedRoute } from '@angular/router';
 import directorio from '../../files/directorio.json';
 
 interface BotonDireccion {
-  nombre: string;
-  abreviatura: string;
-  tipo: string;
-  nombrable: boolean;
+  nombre      : string;
+  abreviatura : string;
+  tipo        : string;
+  nombrable   : boolean;
 }
 @Component({
-  selector: 'app-listado',
-  templateUrl: './listado.component.html',
-  styleUrls: ['./listado.component.css'],
+  selector    : 'app-listado',
+  templateUrl : './listado.component.html',
+  styleUrls   : ['./listado.component.css'],
 })
 export class ListadoComponent implements OnInit {
-  opcionSelector: string = '';
-  nombreExterno: string = '';
-  nomPersonalizado: string = '';
-  estadoNombrable: boolean = false;
-  opcionNombrable: boolean = false;
-  direccionFinal: BotonDireccion[] = [{ nombre: '', abreviatura: '', tipo: '', nombrable: false }];
-  directorioList: BotonDireccion[] = directorio;
-  url: string = '';
-  document: string = '';
+  opcionSelector   : string  = '';
+  nombreExterno    : string  = '';
+  nomPersonalizado : string  = '';
+  estadoNombrable  : boolean = false;
+  opcionNombrable  : boolean = false;
+  url              : string  = '';
+  document         : string  = '';
+  disableInput     : boolean = true;
+  direccionFinal   : BotonDireccion[] = [{ nombre: '', abreviatura: '', tipo: '', nombrable: false }];
+  directorioList   : BotonDireccion[] = directorio;
+
 
   datosSelector: BotonDireccion[] = this.directorioList.filter((dir) => {
     return dir.tipo === 'opcion' || dir.tipo === 'nomenclatura';
@@ -49,18 +51,13 @@ export class ListadoComponent implements OnInit {
     this._route.queryParams.subscribe((params) => {
       this.url = params['url'];
       this.document = params['document'];
-    });
+    });    
   }
 
   cambiarEstadoNombrable(estado: boolean): void {
     this.estadoNombrable = Boolean(estado);
-    this.opcionNombrable = false;
-  }
-
-  eliminarEspaciosNombrable(){
-    this.nombreExterno = this.nombreExterno.includes('  ')
-      ? this.nombreExterno.replace('  ', ' ')
-      : this.nombreExterno
+    if(this.opcionNombrable){this.disableInput=false}
+    this.opcionNombrable = false;  
   }
 
   validarNombrable() {
@@ -76,11 +73,11 @@ export class ListadoComponent implements OnInit {
       alert('El nombre no puede estar vacio');
     } else {
 
-      let boton: BotonDireccion = {
-        nombre: this.nombreExterno,
-        abreviatura: this.nombreExterno,
-        tipo: 'otro',
-        nombrable: false,
+      let boton     : BotonDireccion = {
+        nombre      : this.nombreExterno,
+        abreviatura : this.nombreExterno,
+        tipo        : 'otro',
+        nombrable   : false,
       };
 
       this.validarNombrableInicial(boton);
@@ -88,19 +85,26 @@ export class ListadoComponent implements OnInit {
   }
 
   validarNombrableInicial(boton: BotonDireccion) {
-    if (this.direccionFinal[0].nombre === '') {
-      this.direccionFinal[0] = boton;
-    } else {
-      this.llenarDirecciones(boton);
-    }
-    this.estadoNombrable = false;
-    this.nombreExterno = '';
+    this.opcionNombrable = true;
+    if (this.direccionFinal[0].nombre === '') 
+      {
+        this.direccionFinal[0] = boton;
+      } 
+      else 
+      {
+        this.llenarDirecciones(boton);
+      }
+    this.estadoNombrable  = false;
+    this.nombreExterno    = '';
+    this.disableInput     = true;
+    this.opcionNombrable  = false;
+    this.nomPersonalizado = ''; 
   }
 
   validacionInicial(boton: BotonDireccion): boolean {
-    let tipoBoton: string = boton.tipo;
-    let nombreBoton: string = boton.nombre;
-    let nombrableBoton: boolean = boton.nombrable;
+    let tipoBoton      : string  = boton.tipo;
+    let nombreBoton    : string  = boton.nombre;
+    let nombrableBoton : boolean = boton.nombrable;
 
     this.nomPersonalizado = nombreBoton;
     this.cambiarEstadoNombrable(nombrableBoton);
@@ -198,11 +202,17 @@ export class ListadoComponent implements OnInit {
     let impDireccion: string = '';
     this.direccionFinal.forEach((elemento) => {
 
-      if ((elemento.tipo !== tipoAnterior || elemento.tipo === 'otro') ||
-      (elemento.tipo === 'nomenclatura' && tipoAnterior === 'nomenclatura')) {
-        impDireccion += ` ${elemento.nombre}`;
-      } else {
-        impDireccion += `${elemento.nombre}`;
+      if (
+          (elemento.tipo !== tipoAnterior || elemento.tipo === 'otro') || 
+          (elemento.tipo === 'nomenclatura' && tipoAnterior === 'nomenclatura') || 
+          (elemento.tipo === 'opcion' && tipoAnterior === 'opcion')
+          ) 
+        {
+          impDireccion += ` ${elemento.nombre}`;
+        } 
+          else 
+        {
+          impDireccion += `${elemento.nombre}`;
       }
       
       tipoAnterior = elemento.tipo;
@@ -217,12 +227,18 @@ export class ListadoComponent implements OnInit {
     let impDireccion: string = '';
     this.direccionFinal.forEach((elemento) => {
 
-      if ((elemento.tipo !== tipoAnterior || elemento.tipo === 'otro' ||
-      (elemento.tipo === 'nomenclatura' && tipoAnterior === 'nomenclatura'))) {
-        impDireccion += ` ${elemento.abreviatura}`;
-      } else {
-        impDireccion += `${elemento.abreviatura}`;
-      }
+      if (
+          (elemento.tipo !== tipoAnterior || elemento.tipo === 'otro') || 
+          (elemento.tipo === 'nomenclatura' && tipoAnterior === 'nomenclatura') || 
+          (elemento.tipo === 'opcion' && tipoAnterior === 'opcion') 
+        )
+        {
+          impDireccion += ` ${elemento.abreviatura}`;
+        }
+        else
+        {
+          impDireccion += `${elemento.abreviatura}`;
+        }
   
       tipoAnterior = elemento.tipo;
     });
@@ -241,12 +257,14 @@ export class ListadoComponent implements OnInit {
     } else {
       this.direccionFinal.pop();
     }
-    this.cambiarEstadoNombrable(false);
+    this.cambiarEstadoNombrable(false); 
+    this.nomPersonalizado = '';   
   }
 
   limpiar(): void {
     this.direccionFinal = [{ nombre: '', abreviatura: '', tipo: '', nombrable: false }];
     this.cambiarEstadoNombrable(false);
+    this.nomPersonalizado = '';     
   }
 
   enviar(): void {

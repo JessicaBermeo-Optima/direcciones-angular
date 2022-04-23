@@ -16,12 +16,12 @@
         <form (ngSubmit)="validarNombrable()" class="top_b_nombre" *ngIf="estadoNombrable">
             <span> {{nomPersonalizado}} con nombre?</span>
             <select class="b_nombre_select" [(ngModel)]="opcionNombrable" (change)="cambiarEstadoNombrable(opcionNombrable)" name="opcionNombrable">
-                <option value="" selected>Seleccione</option>
-                <option value="true" selected> Si</option>
+                <option value="false">Seleccione</option>
+                <option value="true"> Si</option>
                 <option value="">No</option>
             </select>
-            <input type="text" [(ngModel)]="nombreExterno" name="nombreExterno">
-            <button class="b_nombre_boton">Agregar</button>
+            <input type="text" [(ngModel)]="nombreExterno" name="nombreExterno" [disabled]="disableInput">
+            <button class="b_nombre_boton" >Agregar</button>
         </form>
     </article>
 </header>
